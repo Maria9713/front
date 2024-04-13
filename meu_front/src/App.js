@@ -1,0 +1,55 @@
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProtectedRouter from "./protectedRouter";
+import api from './api.js';
+
+// Importe suas páginas aqui
+import Login from "./pages/Login/Login";
+import Termo from "./pages/Termo/Termo.jsx";
+import Validacao1 from "./pages/VALICACAO/Validacao.jsx"
+import Validacao2 from "./pages/VALICACAO/Validacao2.jsx"
+import Validacao3 from "./pages/VALICACAO/validacao3.jsx"
+import Redefinir1 from "./pages/ESQUECI_SENHA/Redefinir.jsx"
+import Redefinir2 from "./pages/ESQUECI_SENHA/Redefinir2.jsx"
+import Redefinir3 from "./pages/ESQUECI_SENHA/Redefinir 3.jsx"
+import GrupoCriado from "./pages/Grupo_Criado/GrupoCriado.jsx"
+import Convitee from "./pages/CONVITE_GRUPO/Convite.jsx"
+import Convite2 from "./pages/CONVITE_GRUPO/Convite2.jsx"
+import Home from "./pages/Home/Home.jsx";
+import Menu1  from "./pages/Menu.Principal.jsx";
+
+
+
+
+function App() {
+    useEffect(() =>{
+        api.get('usuarios').then(res=>{
+            console.log(res);
+        })
+    }, [])
+
+    return (
+        <div className="App">
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/Termo" element={<Termo />} />
+                    <Route path="/Validacao1" element={<Validacao1 />} />
+                    <Route path="/Validacao2" element={<Validacao2 />} />
+                    <Route path="/Validacao3" element={<Validacao3 />} />
+                    <Route path="/Redefinir1" element={<Redefinir1 />} />
+                    <Route path="/Redefinir2" element={<Redefinir2 />} />
+                    <Route path="/Redefinir3" element={<Redefinir3 />} />
+                    <Route path="/GrupoCriado" element={<GrupoCriado />} />
+                    <Route path="/Convitee" element={<Convitee />} />
+                    <Route path="/Convite2" element={<Convite2 />} />
+                    <Route path="/Home" element={<Home />} />
+                    <Route path="/Menu1" element={<Menu1 />} />
+
+                </Routes>
+            </BrowserRouter>
+        </div>
+    );
+}
+
+export default App;
