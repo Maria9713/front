@@ -16,7 +16,9 @@ import GrupoCriado from "./pages/Grupo_Criado/GrupoCriado.jsx"
 import Convitee from "./pages/CONVITE_GRUPO/Convite.jsx"
 import Convite2 from "./pages/CONVITE_GRUPO/Convite2.jsx"
 import Home from "./pages/Home/Home.jsx";
-import Menu1  from "./pages/Menu.Principal.jsx";
+import Menu1  from "./pages/Home/Menu.Principal.jsx";
+import Tarefa1 from "./pages/TAREFAS/Tarefas1.jsx"
+import Detalhes from "./pages/TAREFAS/Tarefas2.jsx"
 
 
 
@@ -45,6 +47,8 @@ function App() {
                     <Route path="/Convite2" element={<Convite2 />} />
                     <Route path="/Home" element={<Home />} />
                     <Route path="/Menu1" element={<Menu1 />} />
+                    <Route path="/Tarefa1" element={<Tarefa1 />} />
+                    <Route path="/Detalhes" element={<Detalhes />} />
 
                 </Routes>
             </BrowserRouter>
