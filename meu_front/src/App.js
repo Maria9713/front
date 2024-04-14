@@ -19,7 +19,8 @@ import Home from "./pages/Home/Home.jsx";
 import Menu1  from "./pages/Home/Menu.Principal.jsx";
 import Tarefa1 from "./pages/TAREFAS/Tarefas1.jsx";
 import Detalhes from "./pages/TAREFAS/Tarefas2.jsx";
-import TESTE from "./pages/Teste.jsx";
+import Criar_Tarefa from "./pages/TAREFAS/Tarefa3.jsx";
+import Teste from "./pages/Teste.jsx";
 
 
 
@@ -49,8 +50,9 @@ function App() {
                     <Route path="/Menu1" element={<Menu1 />} />
                     <Route path="/Tarefa1" element={<Tarefa1 />} />
                     <Route path="/Detalhes" element={<Detalhes />} />
-                    <Route path="/TESTE" element={<TESTE />} />
-
+                    <Route path="/Criar_Tarefa" element={<Criar_Tarefa />} />
+                    <Route path="/Teste" element={<Teste />} />
+Criar_Tarefa
 
                 </Routes>
             </BrowserRouter>
