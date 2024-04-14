@@ -6,20 +6,20 @@ import api from './api.js';
 // Importe suas páginas aqui
 import Login from "./pages/Login/Login";
 import Termo from "./pages/Termo/Termo.jsx";
-import Validacao1 from "./pages/VALICACAO/Validacao.jsx"
-import Validacao2 from "./pages/VALICACAO/Validacao2.jsx"
-import Validacao3 from "./pages/VALICACAO/validacao3.jsx"
-import Redefinir1 from "./pages/ESQUECI_SENHA/Redefinir.jsx"
-import Redefinir2 from "./pages/ESQUECI_SENHA/Redefinir2.jsx"
-import Redefinir3 from "./pages/ESQUECI_SENHA/Redefinir 3.jsx"
-import GrupoCriado from "./pages/Grupo_Criado/GrupoCriado.jsx"
-import Convitee from "./pages/CONVITE_GRUPO/Convite.jsx"
-import Convite2 from "./pages/CONVITE_GRUPO/Convite2.jsx"
+import Validacao1 from "./pages/VALICACAO/Validacao.jsx";
+import Validacao2 from "./pages/VALICACAO/Validacao2.jsx";
+import Validacao3 from "./pages/VALICACAO/validacao3.jsx";
+import Redefinir1 from "./pages/ESQUECI_SENHA/Redefinir.jsx";
+import Redefinir2 from "./pages/ESQUECI_SENHA/Redefinir2.jsx";
+import Redefinir3 from "./pages/ESQUECI_SENHA/Redefinir 3.jsx";
+import GrupoCriado from "./pages/Grupo_Criado/GrupoCriado.jsx";
+import Convitee from "./pages/CONVITE_GRUPO/Convite.jsx";
+import Convite2 from "./pages/CONVITE_GRUPO/Convite2.jsx";
 import Home from "./pages/Home/Home.jsx";
 import Menu1  from "./pages/Home/Menu.Principal.jsx";
-import Tarefa1 from "./pages/TAREFAS/Tarefas1.jsx"
-import Detalhes from "./pages/TAREFAS/Tarefas2.jsx"
-
+import Tarefa1 from "./pages/TAREFAS/Tarefas1.jsx";
+import Detalhes from "./pages/TAREFAS/Tarefas2.jsx";
+import TESTE from "./pages/Teste.jsx";
 
 
 
@@ -49,6 +49,8 @@ function App() {
                     <Route path="/Menu1" element={<Menu1 />} />
                     <Route path="/Tarefa1" element={<Tarefa1 />} />
                     <Route path="/Detalhes" element={<Detalhes />} />
+                    <Route path="/TESTE" element={<TESTE />} />
+
 
                 </Routes>
             </BrowserRouter>
