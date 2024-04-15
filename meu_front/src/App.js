@@ -21,6 +21,10 @@ import Tarefa1 from "./pages/TAREFAS/Tarefas1.jsx";
 import Detalhes from "./pages/TAREFAS/Tarefas2.jsx";
 import Criar_Tarefa from "./pages/TAREFAS/Tarefa3.jsx";
 import Concluida from "./pages/TAREFAS/Tarefas4.jsx";
+import PCriada from "./pages/TAREFAS/Pop_Up_1.jsx";
+import PExcluir from "./pages/TAREFAS/Pop_Up_2.jsx";
+import PExcluida from "./pages/TAREFAS/Pop_Up_3.jsx";
+import PConcluida from "./pages/TAREFAS/Pop_Up_4.jsx";
 import Teste from "./pages/Teste.jsx";
 
 
@@ -53,6 +57,10 @@ function App() {
                     <Route path="/Detalhes" element={<Detalhes />} />
                     <Route path="/Criar_Tarefa" element={<Criar_Tarefa />} />
                     <Route path="/Concluida" element={<Concluida />} />
+                    <Route path="/PCriada" element={<PCriada />} />
+                    <Route path="/PExcluir" element={<PExcluir />} />
+                    <Route path="/PEcluida" element={<PExcluida />} />
+                    <Route path="/PConcluida" element={<PConcluida />} />
                     <Route path="/Teste" element={<Teste />} />
 
 

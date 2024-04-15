@@ -13,10 +13,22 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
+import Popup from './Pop_Up_1';
 
 
 
 export default function Configuracoes() {
+
+    // TESTE POP-UP 
+    const [openPopup, setOpenPopup] = useState(false);
+
+    const handleOpenPopup = () => {
+        setOpenPopup(true);
+    };
+
+    const handleClosePopup = () => {
+        setOpenPopup(false);
+    };
 
     // Função de retorno de chamada para o botão de voltar
     const handleBack = () => {};
@@ -155,7 +167,7 @@ export default function Configuracoes() {
                 </IconButton>
                 <CheckBoxOutlineBlankIcon sx={{ width: 50, height: 100, color: '#07382E' }} />
                 <Typography component="h1" variant="h9" sx={{ color: '#07382E', mt: -1 }}>
-                    Nome da Tarefa
+                    Nova Tarefa 
                 </Typography>
 
                 {/* CAMPO DE TÍTULO TAREFA  */}
@@ -236,27 +248,32 @@ export default function Configuracoes() {
                     </Typography>
                 </Box>
 
-                <Grid container justifyContent="center"alignItems= "center" spacing={2}>
-                    <Grid item xs={6}>
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="outlined"
-                            sx={{
-                                mt: 2,
-                                mb: 5,
-                                maxWidth: "180px",
-                                alignItems: "center",
-                                backgroundColor: "#FFFFFF",
-                                color: "#07382E",
-                                borderColor: "#07382E",
-                                "&:hover": { backgroundColor: "#07382E", color: "#FFFFFF" }
-                            }}
-                        >
-                            CRIAR TAREFA
-                        </Button>
-                    </Grid>
+                
+            <Grid container justifyContent="center" alignItems="center" spacing={2}>
+                <Grid item xs={6}>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="outlined"
+                        sx={{
+                            mt: 2,
+                            mb: 5,
+                            maxWidth: "180px",
+                            alignItems: "center",
+                            backgroundColor: "#FFFFFF",
+                            color: "#07382E",
+                            borderColor: "#07382E",
+                            "&:hover": { backgroundColor: "#07382E", color: "#FFFFFF" }
+                        }}
+                        onClick={handleOpenPopup} // Adicione esta linha para abrir o pop-up ao clicar no botão
+                    >
+                        CRIAR TAREFA
+                    </Button>
                 </Grid>
+            </Grid>
+            {/* Componente de pop-up */}
+            <Popup open={openPopup} handleClose={handleClosePopup} />
+        
 
 
                 {/* MENU PRINCIPAL   */}

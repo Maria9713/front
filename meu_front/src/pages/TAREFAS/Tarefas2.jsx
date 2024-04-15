@@ -12,8 +12,23 @@ import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
 import ExpandLess from '@mui/icons-material/ExpandLess'; 
 import ExpandMore from '@mui/icons-material/ExpandMore'; 
 import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
+import Popup from './Pop_Up_2';
 
 export default function Configuracoes() {
+
+  // POP-UP 
+  const [openPopup, setOpenPopup] = useState(false);
+
+  const handleOpenPopup = () => {
+    setOpenPopup(true);
+  };
+  
+  const handleClosePopup = () => {
+    setOpenPopup(false);
+  };
+  
+
+
     const handleBack = () => {};
     const [value, setValue] = React.useState(0);
     const descricao = "Descrição da tarefa"; // Definindo a descrição aqui
@@ -158,16 +173,8 @@ export default function Configuracoes() {
   </Typography>
 </Box>
 
-          {/* MENU PRINCIPAL   */}
-          <Box elevation={3} sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: '#5DA18F' }}>
-            <BottomNavigation showLabels value={value} onChange={(event, newValue) => { setValue(newValue); }}>
-              <BottomNavigationAction label="Home" icon={<HomeIcon sx={{ fill: 'none', stroke: '#07382E', strokeWidth: 2 }} />} sx={{ color: '#07382E', fontSize: '1.2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }} />
-              <BottomNavigationAction label="Progresso" icon={<SchoolIcon sx={{ fill: 'none', stroke: '#07382E', strokeWidth: 2 }} />} sx={{ color: '#07382E', fontSize: '1.2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }} />
-              <BottomNavigationAction label="Avaliação" icon={<StarIcon sx={{ fill: 'none', stroke: '#07382E', strokeWidth: 2 }} />} sx={{ color: '#07382E', fontSize: '1.2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }} />
-            </BottomNavigation>
-          </Box>
-        
-          <Grid container spacing={2}>
+
+<Grid container spacing={2} sx={{marginTop: '6%'}}>
   <Grid item xs={6}>
   <Button
   type="submit"
@@ -205,12 +212,25 @@ export default function Configuracoes() {
       borderBlockColor: 'transparent'
     }
   }}
+  onClick={handleOpenPopup} 
 >
   EXCLUIR
 </Button>
 
   </Grid>
 </Grid>
+<Popup open={openPopup} handleClose={handleClosePopup} />
+
+          {/* MENU PRINCIPAL   */}
+          <Box elevation={3} sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: '#5DA18F' }}>
+            <BottomNavigation showLabels value={value} onChange={(event, newValue) => { setValue(newValue); }}>
+              <BottomNavigationAction label="Home" icon={<HomeIcon sx={{ fill: 'none', stroke: '#07382E', strokeWidth: 2 }} />} sx={{ color: '#07382E', fontSize: '1.2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }} />
+              <BottomNavigationAction label="Progresso" icon={<SchoolIcon sx={{ fill: 'none', stroke: '#07382E', strokeWidth: 2 }} />} sx={{ color: '#07382E', fontSize: '1.2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }} />
+              <BottomNavigationAction label="Avaliação" icon={<StarIcon sx={{ fill: 'none', stroke: '#07382E', strokeWidth: 2 }} />} sx={{ color: '#07382E', fontSize: '1.2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }} />
+            </BottomNavigation>
+          </Box>
+        
+          
 
         </Paper>
       </Container>
