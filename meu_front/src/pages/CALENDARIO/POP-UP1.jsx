@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Modal, Box, Typography, Button } from '@mui/material';
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 
 const Popup = ({ open, handleClose }) => {
     return (
@@ -17,8 +17,8 @@ const Popup = ({ open, handleClose }) => {
               height: '340px',
               borderRadius: '6px'
             }}>
-               <CheckBoxOutlineBlankIcon sx={{ width: 300, height: 170, color: '#07382E' }} />
-              <Typography variant="h5"sx={{ textAlign:'center', fontSize:'1.5rem',fontWeight: 'bold'}}>Tarefa Criada Com Sucesso!  </Typography>
+               <EventAvailableIcon sx={{ marginTop:'3%',width: 300, height: 170, color: '#07382E' }} />
+              <Typography variant="h5"sx={{ textAlign:'center', fontSize:'1.5rem',fontWeight: 'bold'}}>Evento Criado Com Sucesso!  </Typography>
               <Button onClick={handleClose} sx={{  color: '#07382E',fontWeight: 'bold', fontSize:'1rem', marginTop: '8%', marginLeft:'70%'}}>Avançar</Button>
             </div>
           </Modal>
