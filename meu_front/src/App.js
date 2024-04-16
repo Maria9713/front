@@ -22,6 +22,9 @@ import Detalhes from "./pages/TAREFAS/Tarefas2.jsx";
 import Criar_Tarefa from "./pages/TAREFAS/Tarefa3.jsx";
 import Concluida from "./pages/TAREFAS/Tarefas4.jsx";
 import Teste from "./pages/Teste.jsx";
+import Eventos from "./pages/CALENDARIO/Eventos1.jsx";
+import Criar_Evento from "./pages/CALENDARIO/Eventos2.jsx";
+import Dt_Evento from "./pages/CALENDARIO/Eventos3.jsx";
 
 
 
@@ -54,6 +57,9 @@ function App() {
                     <Route path="/Criar_Tarefa" element={<Criar_Tarefa />} />
                     <Route path="/Concluida" element={<Concluida />} />
                     <Route path="/Teste" element={<Teste />} />
+                    <Route path="/Eventos" element={<Eventos/>} />
+                    <Route path="/Criar_Evento" element={<Criar_Evento/>} />
+                    <Route path="/Dt_Evento" element={<Dt_Evento/>} />
 
 
                 </Routes>

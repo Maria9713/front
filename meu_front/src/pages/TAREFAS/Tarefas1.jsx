@@ -11,22 +11,11 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeIcon from '@mui/icons-material/Home';
 import SchoolIcon from '@mui/icons-material/School';
 import StarIcon from '@mui/icons-material/Star';
-import Popup from './Pop_Up_4';
 
 export default function Configuracoes() {
     const handleBack = () => {};
     const [value, setValue] = React.useState(0);
 
-    // POP-UP 
-const [openPopup, setOpenPopup] = useState(false);
-
-const handleOpenPopup = () => {
-  setOpenPopup(true);
-};
-
-const handleClosePopup = () => {
-  setOpenPopup(false);
-};
 
     // Lista de usuários atribuídos à tarefa
     const usuariosAtribuidos = [
@@ -140,10 +129,10 @@ const handleClosePopup = () => {
                                     </Grid>
 
                                     <Grid item>
-                                        <Checkbox onClick={handleOpenPopup} sx={{  color: '#07382E' }}/>
+                                        <Checkbox sx={{  color: '#07382E' }}/>
                                     </Grid>
                                 </Grid>
-                                <Popup open={openPopup} handleClose={handleClosePopup} />
+                                
 
                                 <Box
                                     sx={{
