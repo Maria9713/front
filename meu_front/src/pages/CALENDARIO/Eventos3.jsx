@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
-import { Box,Button, Container, CssBaseline, Paper, Typography, IconButton, Grid, List, ListItemButton, ListItemIcon, ListItemText, Collapse, Avatar } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+import {  Box, Button, Container, CssBaseline, 
+          Paper, Typography, IconButton, Grid, 
+          List, ListItemButton, ListItemIcon, 
+          ListItemText, Collapse, Avatar } from '@mui/material';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import ExpandLess from '@mui/icons-material/ExpandLess'; 
+import ExpandMore from '@mui/icons-material/ExpandMore';
+                // IMPORTS DE ICONES 
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
+import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
+import AlarmIcon from '@mui/icons-material/Alarm';
+                // IMPORTS ICONES MENU
 import HomeIcon from '@mui/icons-material/Home';
 import SchoolIcon from '@mui/icons-material/School';
 import StarIcon from '@mui/icons-material/Star';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
-import ExpandLess from '@mui/icons-material/ExpandLess'; 
-import ExpandMore from '@mui/icons-material/ExpandMore'; 
-import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
-import AlarmIcon from '@mui/icons-material/Alarm';
+                // IMPORT POP-UP 
 import Popup from './POP-UP2';
 
-export default function Configuracoes() {
+export default function DtEventos() {
 
   // POP-UP 
   const [openPopup, setOpenPopup] = useState(false);
@@ -57,13 +63,30 @@ export default function Configuracoes() {
             return null;
           } else if (assignedUsers.length === 1) {
             return (
-              <Avatar alt={assignedUsers[0]} src={`https://source.unsplash.com/32x32/?${assignedUsers[0]}`} sx={{ width: 24, height: 24, marginLeft: 10}} />
+              <Avatar 
+                alt={assignedUsers[0]} 
+                src={`https://source.unsplash.com/32x32/?${assignedUsers[0]}`} 
+                sx={{ 
+                      width: 24, 
+                      height: 24, 
+                      marginLeft: 10
+                    }} 
+              />
             );
           } else {
             return (
               <>
                 {assignedUsers.slice(0, 3).map((user, index) => (
-                  <Avatar key={index} alt={user} src={`https://source.unsplash.com/32x32/?${user}`} sx={{ width: 24, height: 24, ml: -1}} />
+                  <Avatar 
+                    key={index} 
+                    alt={user} 
+                    src={`https://source.unsplash.com/32x32/?${user}`} 
+                    sx={{ 
+                          width: 24, 
+                          height: 24, 
+                          ml: -1
+                    }} 
+                  />
                 ))}
               </>
             );
@@ -76,32 +99,69 @@ export default function Configuracoes() {
             component="nav"
             aria-labelledby="task-list-header"
           >
-            <ListItemButton onClick={handleClick} sx={{ pr: -1 }}> 
-              <ListItemIcon sx={{ mr: -3 }}> 
-                <GroupOutlinedIcon sx={{ color: '#07382E' }} />
+            <ListItemButton 
+              onClick={handleClick} 
+              sx={{ pr: -1 }}
+            > 
+              <ListItemIcon 
+                sx={{ mr: -3 }}
+              > 
+                <GroupOutlinedIcon 
+                  sx={{ color: '#07382E' }} 
+                />
               </ListItemIcon>
+
               {open ? (
-                <ListItemText primary="Pessoas Atribuídas" />
+
+                <ListItemText 
+                  primary="Pessoas Atribuídas" 
+                />
               ) : (
                 <>
-                  <ListItemText primary="Atribuído:" primaryTypographyProps={{ fontWeight: 'bold' }}/>
+                  <ListItemText 
+                    primary="Atribuído:" 
+                    primaryTypographyProps={{ fontWeight: 'bold' }}
+                  />
                   {renderAvatars()}
-                  <ListItemText primary={`${assignedUsers[0]} e +${assignedUsers.length - 1} pessoas`} primaryTypographyProps={{ variant: 'body2', fontSize: '0.8rem' }} sx={{ marginLeft: 2 }} />
+                  <ListItemText 
+                    primary={`${assignedUsers[0]} e +${assignedUsers.length - 1} pessoas`} 
+                    primaryTypographyProps={{ variant: 'body2', fontSize: '0.8rem' }} 
+                    sx={{ marginLeft: 2 }} 
+                  />
                 </>
               )}
               {open ? <ExpandLess /> : <ExpandMore />}
+
             </ListItemButton>
-            <Collapse in={open} timeout="auto" unmountOnExit>
+            <Collapse 
+              in={open} 
+              timeout="auto" 
+              unmountOnExit
+            >
               <List component="div" disablePadding>
+
                 {assignedUsers.map((user, index) => (
-                  <ListItemButton key={index} sx={{ pl: 4 }}>
-                    <Avatar alt={user} src={`https://source.unsplash.com/32x32/?${user}`} />
-                    <ListItemText primary={user} />
+
+                  <ListItemButton 
+                    key={index} 
+                    sx={{ pl: 4 }}
+                  >
+                    <Avatar 
+                      alt={user} 
+                      src={`https://source.unsplash.com/32x32/?${user}`} 
+                    />
+                    <ListItemText 
+                      primary={user} 
+                    />
                   </ListItemButton>
                 ))}
+
               </List>
+
             </Collapse>
+
           </List>
+          
         );
     };
 
@@ -180,15 +240,15 @@ export default function Configuracoes() {
     borderRadius: '5px',
     marginTop: '5%',
     display: 'flex',
-    flexDirection: 'column', // Alterado para column para que o conteúdo fique um embaixo do outro
-    alignItems: 'flex-start', // Alterado para flex-start para alinhar à esquerda
+    flexDirection: 'column', 
+    alignItems: 'flex-start', 
     padding: '10px'
   }}
 >
   <Grid container alignItems="center" spacing={1}>
     <Grid item>
       <IconButton disabled>
-        <EditNoteOutlinedIcon sx={{ color: '#07382E' }} /> {/* Removido o marginLeft */}
+        <EditNoteOutlinedIcon sx={{ color: '#07382E' }} /> 
       </IconButton>
     </Grid>
     <Grid item>
@@ -197,7 +257,7 @@ export default function Configuracoes() {
       </Typography>
     </Grid>
   </Grid>
-  <Typography variant="body1" paragraph sx={{ textAlign: 'left', marginTop: '2px', marginLeft: '3%' }}> {/* Adicionado marginTop para separar da linha acima */}
+  <Typography variant="body1" paragraph sx={{ textAlign: 'left', marginTop: '2px', marginLeft: '3%' }}> 
     {descricao}
   </Typography>
 </Box>

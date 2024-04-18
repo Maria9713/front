@@ -19,7 +19,7 @@ import Popup from './Pop_Up_1';
 
 export default function Configuracoes() {
 
-    // TESTE POP-UP 
+    //  POP-UP 
     const [openPopup, setOpenPopup] = useState(false);
 
     const handleOpenPopup = () => {
@@ -142,8 +142,6 @@ export default function Configuracoes() {
                         ))}
                     </List>
                 </Collapse>
-
-                <UserListMenu />
             </List>
         );
     };
@@ -167,7 +165,7 @@ export default function Configuracoes() {
                 </IconButton>
                 <CheckBoxOutlineBlankIcon sx={{ width: 50, height: 100, color: '#07382E' }} />
                 <Typography component="h1" variant="h9" sx={{ color: '#07382E', mt: -1 }}>
-                    Nova Tarefa 
+                    Editar Tarefa
                 </Typography>
 
                 {/* CAMPO DE TÍTULO TAREFA  */}
@@ -259,17 +257,38 @@ export default function Configuracoes() {
                             mt: 2,
                             mb: 5,
                             maxWidth: "180px",
-                            alignItems: "center",
-                            backgroundColor: "#FFFFFF",
-                            color: "#07382E",
-                            borderColor: "#07382E",
-                            "&:hover": { backgroundColor: "#07382E", color: "#FFFFFF" }
+                            backgroundColor: "transparent",
+                            color: "#FF0000",
+                            borderColor: "#FF0000",
+                            "&:hover": {
+                            backgroundColor: "#FF0000",
+                            color: "#FFFFFF",
+                            borderBlockColor: 'transparent'
+                            }
                         }}
-                        onClick={handleOpenPopup} // Adicione esta linha para abrir o pop-up ao clicar no botão
+                    >
+                        CANCELAR 
+                    </Button>
+                </Grid>
+                <Grid item xs={6}>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="outlined"
+                        sx={{
+                            mt: 2,
+    mb: 5,
+    maxWidth: "180px",
+    backgroundColor: "#FFFFFF",
+    color: "#07382E",
+    borderColor: "#07382E",
+    "&:hover": { backgroundColor: "#07382E", color: "#FFFFFF" }
+                        }}
+                        onClick={handleOpenPopup} 
                     >
                         SALVAR 
                     </Button>
-                </Grid>
+                    </Grid>
             </Grid>
             {/* Componente de pop-up */}
             <Popup open={openPopup} handleClose={handleClosePopup} />

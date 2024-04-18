@@ -122,15 +122,14 @@ export default function Configuracoes() {
     borderRadius: '5px',
     marginTop: '5%',
     display: 'flex',
-    flexDirection: 'column', // Alterado para column para que o conteúdo fique um embaixo do outro
-    alignItems: 'flex-start', // Alterado para flex-start para alinhar à esquerda
-    padding: '10px'
+    flexDirection: 'column', 
+    alignItems: 'flex-start', 
   }}
 >
   <Grid container alignItems="center" spacing={1}>
     <Grid item>
       <IconButton disabled>
-        <EditNoteOutlinedIcon sx={{ color: '#07382E' }} /> {/* Removido o marginLeft */}
+        <EditNoteOutlinedIcon sx={{ color: '#07382E' }} />
       </IconButton>
     </Grid>
     <Grid item>
@@ -139,7 +138,7 @@ export default function Configuracoes() {
       </Typography>
     </Grid>
   </Grid>
-  <Typography variant="body1" paragraph sx={{ textAlign: 'left', marginTop: '2px', marginLeft: '3%' }}> {/* Adicionado marginTop para separar da linha acima */}
+  <Typography variant="body1" paragraph sx={{ textAlign: 'left', marginTop: '2px', marginLeft: '3%' }}> 
     {descricao}
   </Typography>
 </Box>
