@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Box,Button, Container, CssBaseline, Paper, Typography, IconButton, Grid, List, ListItemButton, ListItemIcon, ListItemText, Collapse, Avatar } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import BottomNavigation from '@mui/material/BottomNavigation';
@@ -18,6 +19,7 @@ export default function Configuracoes() {
 
   // POP-UP 
   const [openPopup, setOpenPopup] = useState(false);
+  const navigate = useNavigate();
 
   const handleOpenPopup = () => {
     setOpenPopup(true);
@@ -27,9 +29,27 @@ export default function Configuracoes() {
     setOpenPopup(false);
   };
   
+  const handleEditClick = () => {
+    navigate('/Edt_Tarefa');
+  };
+
+  const handleBack = () => {
+    navigate('/Central_Tarefas');
+  };
+  
+  const handleHome= () => {
+    navigate('/');
+};
+
+const handleProgresso= () => {
+    navigate('/');
+};
+
+const handleAvaliacao= () => {
+    navigate('/');
+};
 
 
-    const handleBack = () => {};
     const [value, setValue] = React.useState(0);
     const descricao = "Descrição da tarefa"; // Definindo a descrição aqui
 
@@ -177,6 +197,7 @@ export default function Configuracoes() {
 <Grid container spacing={2} sx={{marginTop: '6%'}}>
   <Grid item xs={6}>
   <Button
+  onClick={handleEditClick}
   type="submit"
   fullWidth
   variant="outlined"
@@ -222,13 +243,42 @@ export default function Configuracoes() {
 <Popup open={openPopup} handleClose={handleClosePopup} />
 
           {/* MENU PRINCIPAL   */}
-          <Box elevation={3} sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: '#5DA18F' }}>
-            <BottomNavigation showLabels value={value} onChange={(event, newValue) => { setValue(newValue); }}>
-              <BottomNavigationAction label="Home" icon={<HomeIcon sx={{ fill: 'none', stroke: '#07382E', strokeWidth: 2 }} />} sx={{ color: '#07382E', fontSize: '1.2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }} />
-              <BottomNavigationAction label="Progresso" icon={<SchoolIcon sx={{ fill: 'none', stroke: '#07382E', strokeWidth: 2 }} />} sx={{ color: '#07382E', fontSize: '1.2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }} />
-              <BottomNavigationAction label="Avaliação" icon={<StarIcon sx={{ fill: 'none', stroke: '#07382E', strokeWidth: 2 }} />} sx={{ color: '#07382E', fontSize: '1.2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }} />
-            </BottomNavigation>
-          </Box>
+          <Box elevation={3} >
+
+<BottomNavigation
+sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: '#5DA18F80', height: '9%'}}
+    showLabels
+    value={value}
+    onChange={(event, newValue) => {
+    setValue(newValue);
+    }}
+
+        >
+
+<BottomNavigationAction 
+    onClick={handleHome}
+    label="Home" 
+    icon={<HomeIcon sx={{ fill: value === 0 ? '#07382E' : 'none', stroke: '#07382E', strokeWidth: 2, fontSize: '2rem' }} />}
+    sx={{ color:  '#07382E', fontSize: '3em', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10x' } }}
+/>
+
+<BottomNavigationAction 
+    onClick={handleProgresso}
+    label="Progresso" 
+    icon={<SchoolIcon sx={{ fill: value === 1 ? '#07382E' : 'none', stroke: '#07382E', strokeWidth: 2, fontSize: '2rem' }} />}
+    sx={{ color: '#07382E', fontSize: '2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }}
+/>
+
+<BottomNavigationAction 
+    onClick={handleAvaliacao}
+    label="Avaliação" 
+    icon={<StarIcon sx={{ fill: value === 2 ? '#07382E' : 'none', stroke: '#07382E', strokeWidth: 2, fontSize: '2rem'  }} />}
+    sx={{ color: '#07382E', fontSize: '2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }}
+/>
+
+</BottomNavigation>
+
+</Box>
         
           
 

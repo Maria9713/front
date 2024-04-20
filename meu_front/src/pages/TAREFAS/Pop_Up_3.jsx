@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Modal, Typography, Button } from '@mui/material';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
+import { useNavigate } from 'react-router-dom';
 
 const PopUp3 = ({ open, handleClose }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (open) {
+      const redirectTimeout = setTimeout(() => {
+        navigate('/Central_Tarefas');
+      }, 2000);
+      return () => clearTimeout(redirectTimeout);
+    }
+  }, [open, navigate]);
+
   return (
     <Modal open={open} onClose={handleClose} onClick={handleClose}>
       <div

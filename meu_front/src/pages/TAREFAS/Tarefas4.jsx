@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box,Button, Container, CssBaseline, Paper, Typography, IconButton, Grid, List, ListItemButton, ListItemIcon, ListItemText, Collapse, Avatar } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useNavigate } from 'react-router-dom';
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
@@ -12,15 +13,32 @@ import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
 import HowToRegOutlinedIcon from '@mui/icons-material/HowToRegOutlined';
 
 export default function Configuracoes() {
-    const handleBack = () => {};
+
+    const navigate = useNavigate();
+    const handleBack = () => {
+      navigate('/Central_Tarefas');
+    };
+
+    const handleHome= () => {
+      navigate('/');
+    };
+
+    const handleProgresso= () => {
+        navigate('/');
+    };
+
+    const handleAvaliacao= () => {
+        navigate('/');
+    };
+
     const [value, setValue] = React.useState(0);
     const descricao = "Descrição da tarefa"; // Definindo a descrição aqui
 
-   // Modificando a função TaskList para mostrar quem concluiu a tarefa
+   // TaskList para mostrar quem concluiu a tarefa
    const TaskList = () => {
-    const completedBy = "João"; // Definindo quem concluiu a tarefa aqui
-    const completionDate = "14/04/2024"; // Definindo a data de conclusão aqui (ou null se não concluída)
-    const assignedTo = "Maria"; // Definindo quem foi atribuído (não concluiu) a tarefa aqui
+    const completedBy = "João"; 
+    const completionDate = "14/04/2024"; 
+    const assignedTo = "Maria"; 
     
     return (
       <List sx={{ width: '100%' }} component="nav" aria-labelledby="task-list-header">
@@ -49,7 +67,7 @@ export default function Configuracoes() {
               </>
             }
             primaryTypographyProps={{ variant: 'body2', fontSize: '0.8rem', display: 'flex', alignItems: 'center' }}
-            sx={{ marginLeft: '0.5rem' }} // Adicionamos margem esquerda para o ListItemText
+            sx={{ marginLeft: '0.5rem' }} 
           />
         </ListItemButton>
         <ListItemButton sx={{ pr: -1 }}>
@@ -62,7 +80,7 @@ export default function Configuracoes() {
               </>
             }
             primaryTypographyProps={{ variant: 'body2', fontSize: '0.8rem', display: 'flex', alignItems: 'center' }}
-            sx={{ marginLeft: '0.5rem' }} // Adicionamos margem esquerda para o ListItemText
+            sx={{ marginLeft: '0.5rem' }} 
           />
         </ListItemButton>
         <Collapse in={true} timeout="auto" unmountOnExit>
@@ -144,14 +162,42 @@ export default function Configuracoes() {
 </Box>
 
           {/* MENU PRINCIPAL   */}
-          <Box elevation={3} sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: '#5DA18F' }}>
-            <BottomNavigation showLabels value={value} onChange={(event, newValue) => { setValue(newValue); }}>
-              <BottomNavigationAction label="Home" icon={<HomeIcon sx={{ fill: 'none', stroke: '#07382E', strokeWidth: 2 }} />} sx={{ color: '#07382E', fontSize: '1.2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }} />
-              <BottomNavigationAction label="Progresso" icon={<SchoolIcon sx={{ fill: 'none', stroke: '#07382E', strokeWidth: 2 }} />} sx={{ color: '#07382E', fontSize: '1.2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }} />
-              <BottomNavigationAction label="Avaliação" icon={<StarIcon sx={{ fill: 'none', stroke: '#07382E', strokeWidth: 2 }} />} sx={{ color: '#07382E', fontSize: '1.2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }} />
-            </BottomNavigation>
-          </Box>
+          <Box elevation={3} >
 
+<BottomNavigation
+sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: '#5DA18F80', height: '9%'}}
+    showLabels
+    value={value}
+    onChange={(event, newValue) => {
+    setValue(newValue);
+    }}
+
+        >
+
+<BottomNavigationAction 
+    onClick={handleHome}
+    label="Home" 
+    icon={<HomeIcon sx={{ fill: value === 0 ? '#07382E' : 'none', stroke: '#07382E', strokeWidth: 2, fontSize: '2rem' }} />}
+    sx={{ color:  '#07382E', fontSize: '3em', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10x' } }}
+/>
+
+<BottomNavigationAction 
+    onClick={handleProgresso}
+    label="Progresso" 
+    icon={<SchoolIcon sx={{ fill: value === 1 ? '#07382E' : 'none', stroke: '#07382E', strokeWidth: 2, fontSize: '2rem' }} />}
+    sx={{ color: '#07382E', fontSize: '2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }}
+/>
+
+<BottomNavigationAction 
+    onClick={handleAvaliacao}
+    label="Avaliação" 
+    icon={<StarIcon sx={{ fill: value === 2 ? '#07382E' : 'none', stroke: '#07382E', strokeWidth: 2, fontSize: '2rem'  }} />}
+    sx={{ color: '#07382E', fontSize: '2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }}
+/>
+
+</BottomNavigation>
+
+</Box>
         </Paper>
       </Container>
     );

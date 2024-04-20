@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Button, Container, CssBaseline, Paper, Typography, IconButton, Grid, List, ListItemButton, ListItemIcon, ListItemText, Collapse, Avatar, Menu, MenuItem, Checkbox } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useNavigate } from 'react-router-dom';
+import { Box, Button, Container, CssBaseline, Paper, Typography, IconButton, Grid, List, ListItemButton, ListItemIcon, ListItemText, Collapse, Avatar, Menu, MenuItem, Checkbox, TextField } from '@mui/material';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
@@ -15,12 +15,46 @@ import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import Popup from './Pop_Up_1';
 
-
-
 export default function Configuracoes() {
+    const navigate = useNavigate();
 
-    //  POP-UP 
+    const handleCancelarClick = () => {
+        navigate('/Detalhes');
+    };
+
+    const handleHome= () => {
+        navigate('/');
+    };
+
+    const handleProgresso= () => {
+        navigate('/');
+    };
+
+    const handleAvaliacao= () => {
+        navigate('/');
+    };
+
+
+                             // CONSTS DO FORMS 
+    const [titulo, setTitulo] = useState('');
+    const [dataConclusao, setDataConclusao] = useState('');
+    const [descricao, setDescricao] = useState('');
     const [openPopup, setOpenPopup] = useState(false);
+    const [value, setValue] = useState(0);
+    const [assignedUsers, setAssignedUsers] = useState(["João", "Maria", "Carlos", "Ana", "Pedro"]);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const openMenu = Boolean(anchorEl);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log('Título:', titulo);
+        console.log('Data de Conclusão:', dataConclusao);
+        console.log('Descrição:', descricao);
+        setTitulo('');
+        setDataConclusao('');
+        setDescricao('');
+    };
+
 
     const handleOpenPopup = () => {
         setOpenPopup(true);
@@ -30,23 +64,12 @@ export default function Configuracoes() {
         setOpenPopup(false);
     };
 
-    // Função de retorno de chamada para o botão de voltar
     const handleBack = () => {};
-    // Estado e função para atualizar o valor do BottomNavigation
-    const [value, setValue] = React.useState(0);
-     // Descrição da tarefa
-    const descricao = "Descrição da tarefa"; 
-    // Estado e função para atualizar a lista de usuários atribuídos à tarefa
-    const [assignedUsers, setAssignedUsers] = useState(["João", "Maria", "Carlos", "Ana", "Pedro"]);
-      // Estado e função para atualizar o elemento de ancoragem do menu de usuários
-    const [anchorEl, setAnchorEl] = useState(null);
-    // Variável booleana para verificar se o menu de usuários está aberto
-    const openMenu = Boolean(anchorEl);
-    // Função de retorno de chamada para lidar com o clique no menu
+
     const handleMenuClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-    // Função de retorno de chamada para lidar com o clique nos itens do menu
+
     const handleMenuItemClick = (user) => {
         const index = assignedUsers.indexOf(user);
         if (index === -1) {
@@ -57,11 +80,11 @@ export default function Configuracoes() {
             setAssignedUsers(updatedUsers);
         }
     };
-     // Função de retorno de chamada para fechar o menu
+
     const handleClose = () => {
         setAnchorEl(null);
     };
-    // Componente do menu de usuários atribuídos
+
     const UserListMenu = () => {
         return (
             <Menu
@@ -81,22 +104,29 @@ export default function Configuracoes() {
             </Menu>
         );
     };
-    // Função para obter todos os usuários disponíveis
+
     const getAllUsers = () => {
-        // Aqui você deve retornar todos os usuários disponíveis
-        // Por enquanto, vamos apenas retornar uma lista fixa
         const allUsers = ['João', 'Maria', 'Carlos', 'Ana', 'Pedro'];
         return allUsers;
     };
-     // Componente da lista de tarefas
+
     const TaskList = () => {
         const [open, setOpen] = useState(false);
-
-        const handleClick = () => {
+        const [userListOpen, setUserListOpen] = useState(false); 
+    
+        const handleListClick = () => {
             setOpen(!open);
         };
-    // Função para renderizar avatares dos usuários atribuídos
-    const renderAvatars = () => {
+    
+        const handleUserClick = () => {
+            setUserListOpen(false); 
+        };
+    
+        const handleUserListClick = () => {
+            setUserListOpen(!userListOpen); 
+        };
+    
+        const renderAvatars = () => {
             if (assignedUsers.length === 0) {
                 return null;
             } else if (assignedUsers.length === 1) {
@@ -105,7 +135,6 @@ export default function Configuracoes() {
                 );
             } else {
                 return (
-                
                     <>
                         {assignedUsers.slice(0, 3).map((user, index) => (
                             <Avatar key={index} alt={user} src={`https://source.unsplash.com/32x32/?${user}`} sx={{ width: 24, height: 24, ml: -1 }} />
@@ -114,37 +143,44 @@ export default function Configuracoes() {
                 );
             }
         };
-     
-        const summary = renderSummary();
-
+    
+        const summary = assignedUsers.length === 0 ? "Nenhum atribuído" : renderSummary();
+    
         return (
-                <List sx={{ width: '100%' }} component="nav" aria-labelledby="task-list-header">
-                <ListItemButton onClick={handleClick} sx={{ pr: -1 }}>
+            <List sx={{ width: '100%' }} component="nav" aria-labelledby="task-list-header">
+                <ListItemButton onClick={handleListClick} sx={{ pr: 0 }}>
                     <ListItemIcon sx={{ mr: -3 }}>
                         <GroupOutlinedIcon sx={{ color: '#07382E' }} />
                     </ListItemIcon>
                     <ListItemText primary="Atribuído:" primaryTypographyProps={{ fontWeight: 'bold' }} />
                     {renderAvatars()}
-                    <ListItemText primary={summary} primaryTypographyProps={{ variant: 'body2', fontSize: '0.8rem' }} sx={{ marginLeft: 2 }} />
-                    <IconButton onClick={handleMenuClick}>
-                        {open ? <ExpandLess /> : <ExpandMore />}
+                    <ListItemText primary={summary} primaryTypographyProps={{ variant: 'body2', fontSize: '0.79rem' }} sx={{ marginLeft:1 }} />
+                    <IconButton onClick={handleUserListClick}> 
+                        {userListOpen ? <ExpandLess /> : <ExpandMore />} 
                     </IconButton>
                 </ListItemButton>
-                {/* Lista de Usuários (sem avatares) */}
                 <Collapse in={open} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
-                        {getAllUsers().map((user, index) => (
-                            <ListItemButton key={index} sx={{ pl: 4 }}>
-                                <Checkbox checked={assignedUsers.includes(user)} onClick={() => handleMenuItemClick(user)} />
-                                <Avatar alt={user} src={`https://source.unsplash.com/32x32/?${user}`} />
-                                <ListItemText primary={user} />
+                        {assignedUsers.length === 0 ? (
+                            <ListItemButton sx={{ pl: 4 }}>
+                                <ListItemText primary="Nenhum atribuído" />
                             </ListItemButton>
-                        ))}
+                        ) : (
+                            getAllUsers().map((user, index) => (
+                                <ListItemButton key={index} sx={{ pl: 4 }} onClick={handleUserClick}>
+                                    <Checkbox checked={assignedUsers.includes(user)} onClick={() => handleMenuItemClick(user)} />
+                                    <Avatar alt={user} src={`https://source.unsplash.com/32x32/?${user}`} />
+                                    <ListItemText primary={user} />
+                                </ListItemButton>
+                            ))
+                        )}
                     </List>
                 </Collapse>
             </List>
         );
     };
+    
+
 
     const renderSummary = () => {
         if (assignedUsers.length === 0) {
@@ -160,15 +196,12 @@ export default function Configuracoes() {
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <Paper elevation={2} sx={{ mt: 5, p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: "0" }}>
-                <IconButton onClick={handleBack} sx={{ alignSelf: 'flex-start' }}>
-                    <ArrowBackIcon sx={{ fontSize: 35 }} />
-                </IconButton>
-                <CheckBoxOutlineBlankIcon sx={{ width: 50, height: 100, color: '#07382E' }} />
+                <CheckBoxOutlineBlankIcon sx={{ width: 50, height: 100, color: '#07382E', mt: -1 }} />
                 <Typography component="h1" variant="h9" sx={{ color: '#07382E', mt: -1 }}>
-                    Editar Tarefa
+                    Editar Tarefa 
                 </Typography>
 
-                {/* CAMPO DE TÍTULO TAREFA  */}
+                <form onSubmit={handleSubmit}>
                 <Box sx={{ boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', width: '100%', height: '100%', borderRadius: '5px', marginTop: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '-10px' }}>
                     <Grid container alignItems="center" spacing={1}>
                         <Grid item>
@@ -182,14 +215,16 @@ export default function Configuracoes() {
                             </Typography>
                         </Grid>
                         <Grid item>
-                            <Typography variant="body1" paragraph sx={{ textAlign: 'center', marginTop: '20%', marginLeft: '10%' }}>
-                                {/* {task.dueDate} */}
-                            </Typography>
+                        <TextField
+                            fullWidth
+                            value={titulo}
+                            onChange={(event) => setTitulo(event.target.value)}
+                            variant="standard"
+                        />
                         </Grid>
                     </Grid>
                 </Box>
 
-                {/* CAMPO DE  DATA  */}
                 <Box sx={{ boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', width: '100%', height: '100%', borderRadius: '5px', marginTop: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '-10px' }}>
                     <Grid container alignItems="center" spacing={1}>
                         <Grid item>
@@ -202,20 +237,22 @@ export default function Configuracoes() {
                                 Data de Conclusão:
                             </Typography>
                         </Grid>
-                        <Grid item>
-                            <Typography variant="body1" paragraph sx={{ textAlign: 'center', marginTop: '20%', marginLeft: '10%' }}>
-                                {/* {task.dueDate} */}
-                            </Typography>
+                        <Grid item xs={4.5}>
+                            <TextField
+                                fullWidth
+                                type="date"
+                                value={dataConclusao}
+                                onChange={(event) => setDataConclusao(event.target.value)}
+                                variant="standard"
+                            />
                         </Grid>
                     </Grid>
                 </Box>
 
-                {/* CAMPO DE LEITURA ATRIBUIDOS  */}
                 <Box sx={{ boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', width: '100%', height: '100%', borderRadius: '5px', marginTop: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '-10px' }}>
                     <TaskList />
                 </Box>
 
-                {/* CAMPO DE  DESCRIÇÃO  */}
                 <Box
                     sx={{
                         boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)',
@@ -241,69 +278,99 @@ export default function Configuracoes() {
                             </Typography>
                         </Grid>
                     </Grid>
-                    <Typography variant="body1" paragraph sx={{ textAlign: 'left', marginTop: '2px', marginLeft: '3%' }}> {/* Adicionado marginTop para separar da linha acima */}
-                        {descricao}
-                    </Typography>
+                    <TextField
+                        fullWidth
+                        value={descricao}
+                        onChange={(event) => setDescricao(event.target.value)}
+                        variant="standard"
+                    />
                 </Box>
+            </form>
 
-                
             <Grid container justifyContent="center" alignItems="center" spacing={2}>
-                <Grid item xs={6}>
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="outlined"
-                        sx={{
-                            mt: 2,
-                            mb: 5,
-                            maxWidth: "180px",
-                            backgroundColor: "transparent",
-                            color: "#FF0000",
-                            borderColor: "#FF0000",
-                            "&:hover": {
-                            backgroundColor: "#FF0000",
-                            color: "#FFFFFF",
-                            borderBlockColor: 'transparent'
-                            }
-                        }}
-                    >
-                        CANCELAR 
-                    </Button>
-                </Grid>
-                <Grid item xs={6}>
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="outlined"
-                        sx={{
-                            mt: 2,
-    mb: 5,
-    maxWidth: "180px",
-    backgroundColor: "#FFFFFF",
-    color: "#07382E",
-    borderColor: "#07382E",
-    "&:hover": { backgroundColor: "#07382E", color: "#FFFFFF" }
-                        }}
-                        onClick={handleOpenPopup} 
-                    >
-                        SALVAR 
-                    </Button>
-                    </Grid>
-            </Grid>
-            {/* Componente de pop-up */}
-            <Popup open={openPopup} handleClose={handleClosePopup} />
+<Grid item xs={6}>
+    <Button
+    onClick={handleCancelarClick}
+        type="submit"
+        fullWidth
+        variant="outlined"
+        sx={{
+            mt: 2,
+            mb: 5,
+            maxWidth: "180px",
+            backgroundColor: "transparent",
+            color: "#FF0000",
+            borderColor: "#FF0000",
+            "&:hover": {
+            backgroundColor: "#FF0000",
+            color: "#FFFFFF",
+            borderBlockColor: 'transparent'
+            }
+        }}
         
+    >
+        CANCELAR 
+    </Button>
+</Grid>
+<Grid item xs={6}>
+    <Button
+        type="submit"
+        fullWidth
+        variant="outlined"
+        sx={{
+            mt: 2,
+mb: 5,
+maxWidth: "180px",
+backgroundColor: "#FFFFFF",
+color: "#07382E",
+borderColor: "#07382E",
+"&:hover": { backgroundColor: "#07382E", color: "#FFFFFF" }
+        }}
+        onClick={handleOpenPopup} 
+    >
+        SALVAR 
+    </Button>
+    </Grid>
+</Grid>
+            
+            <Popup open={openPopup} handleClose={handleClosePopup} />
+                
+            <Box elevation={3} >
 
+<BottomNavigation
+sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: '#5DA18F80', height: '9%'}}
+    showLabels
+    value={value}
+    onChange={(event, newValue) => {
+    setValue(newValue);
+    }}
 
-                {/* MENU PRINCIPAL   */}
-                <Box elevation={3} sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: '#5DA18F' }}>
-                    <BottomNavigation showLabels value={value} onChange={(event, newValue) => { setValue(newValue); }}>
-                        <BottomNavigationAction label="Home" icon={<HomeIcon sx={{ fill: 'none', stroke: '#07382E', strokeWidth: 2 }} />} sx={{ color: '#07382E', fontSize: '1.2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }} />
-                        <BottomNavigationAction label="Progresso" icon={<SchoolIcon sx={{ fill: 'none', stroke: '#07382E', strokeWidth: 2 }} />} sx={{ color: '#07382E', fontSize: '1.2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }} />
-                        <BottomNavigationAction label="Avaliação" icon={<StarIcon sx={{ fill: 'none', stroke: '#07382E', strokeWidth: 2 }} />} sx={{ color: '#07382E', fontSize: '1.2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }} />
-                    </BottomNavigation>
-                </Box>
+        >
 
+<BottomNavigationAction 
+    onClick={handleHome}
+    label="Home" 
+    icon={<HomeIcon sx={{ fill: value === 0 ? '#07382E' : 'none', stroke: '#07382E', strokeWidth: 2, fontSize: '2rem' }} />}
+    sx={{ color:  '#07382E', fontSize: '3em', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10x' } }}
+/>
+
+<BottomNavigationAction 
+    onClick={handleProgresso}
+    label="Progresso" 
+    icon={<SchoolIcon sx={{ fill: value === 1 ? '#07382E' : 'none', stroke: '#07382E', strokeWidth: 2, fontSize: '2rem' }} />}
+    sx={{ color: '#07382E', fontSize: '2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }}
+/>
+
+<BottomNavigationAction 
+    onClick={handleAvaliacao}
+    label="Avaliação" 
+    icon={<StarIcon sx={{ fill: value === 2 ? '#07382E' : 'none', stroke: '#07382E', strokeWidth: 2, fontSize: '2rem'  }} />}
+    sx={{ color: '#07382E', fontSize: '2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }}
+/>
+
+</BottomNavigation>
+
+</Box>
                 
             </Paper>
         </Container>

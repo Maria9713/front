@@ -23,9 +23,9 @@ import Convite2 from "./pages/CONVITE_GRUPO/Convite2.jsx";
 import Home from "./pages/Home/Home.jsx";
 import Menu1  from "./pages/Home/Menu.Principal.jsx";
 
-import Tarefa1 from "./pages/TAREFAS/Tarefas1.jsx";
-import Detalhes from "./pages/TAREFAS/Tarefas2.jsx";
+import Central_Tarefas from "./pages/TAREFAS/Tarefas1.jsx";
 import Criar_Tarefa from "./pages/TAREFAS/Tarefa3.jsx";
+import Detalhes from "./pages/TAREFAS/Tarefas2.jsx";
 import Edt_Tarefa from "./pages/TAREFAS/Tarefas5.jsx";
 import Concluida from "./pages/TAREFAS/Tarefas4.jsx";
 
@@ -33,6 +33,8 @@ import Eventos from "./pages/CALENDARIO/Eventos1.jsx";
 import CriarEvento from "./pages/CALENDARIO/Eventos2.jsx";
 import Dt_Evento from "./pages/CALENDARIO/Eventos3.jsx";
 import Edt_Evento from "./pages/CALENDARIO/Eventos4.jsx";
+
+import Modelo from "./pages/MODELO/Modelo.jsx";
 
 import Teste from "./pages/Teste.jsx";
 
@@ -68,9 +70,9 @@ function App() {
                     <Route path="/Home" element={<Home />} />
                     <Route path="/Menu1" element={<Menu1 />} />
 
-                    <Route path="/Tarefa1" element={<Tarefa1 />} />
-                    <Route path="/Detalhes" element={<Detalhes />} />
+                    <Route path="/Central_Tarefas" element={<Central_Tarefas />} />
                     <Route path="/Criar_Tarefa" element={<Criar_Tarefa />} />
+                    <Route path="/Detalhes" element={<Detalhes />} />
                     <Route path="/Edt_Tarefa" element={<Edt_Tarefa />} />
                     <Route path="/Concluida" element={<Concluida />} />
 
@@ -78,6 +80,8 @@ function App() {
                     <Route path="/CriarEvento" element={<CriarEvento/>} />
                     <Route path="/Dt_Evento" element={<Dt_Evento/>} />
                     <Route path="/Edt_Evento" element={<Edt_Evento />} />
+
+                    <Route path='/Modelo' element={<Modelo/>}/>
 
                     <Route path="/Teste" element={<Teste />} />
 

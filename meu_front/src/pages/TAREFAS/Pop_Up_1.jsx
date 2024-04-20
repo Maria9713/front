@@ -1,9 +1,22 @@
 
-import React from 'react';
-import { Modal, Box, Typography, Button } from '@mui/material';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Modal, Typography, Button } from '@mui/material';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 
 const Popup = ({ open, handleClose }) => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (open) {
+      const redirectTimeout = setTimeout(() => {
+        navigate('/Detalhes');
+      }, 2000);
+      return () => clearTimeout(redirectTimeout);
+    }
+  }, [open, navigate]);
+
     return (
             <Modal open={open} onClose={handleClose}>
             <div style={{ 
@@ -19,7 +32,6 @@ const Popup = ({ open, handleClose }) => {
             }}>
                <CheckBoxOutlineBlankIcon sx={{ width: 300, height: 170, color: '#07382E' }} />
               <Typography variant="h5"sx={{ textAlign:'center', fontSize:'1.5rem',fontWeight: 'bold'}}>Tarefa Criada Com Sucesso!  </Typography>
-              <Button onClick={handleClose} sx={{  color: '#07382E',fontWeight: 'bold', fontSize:'1rem', marginTop: '8%', marginLeft:'70%'}}>Avançar</Button>
             </div>
           </Modal>
     );
