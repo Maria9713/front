@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Button, Container, CssBaseline, Paper, Typography, IconButton, Grid, List, ListItemButton, ListItemIcon, ListItemText, Collapse, Avatar, Menu, MenuItem, Checkbox, TextField } from '@mui/material';
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import HomeIcon from '@mui/icons-material/Home';
-import SchoolIcon from '@mui/icons-material/School';
-import StarIcon from '@mui/icons-material/Star';
+
+// IMPORT ICONES 
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
+import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
-import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
-import Popup from './Pop_Up_1';
+
+// IMPORT ICONES MENU 
+import HomeIcon from '@mui/icons-material/Home';
+import SchoolIcon from '@mui/icons-material/School';
+import StarIcon from '@mui/icons-material/Star';
+
+// IMPORT POP-UP
+import Popup from './Pop_Up_1'; 
+
 
 export default function Configuracoes() {
     const navigate = useNavigate();
@@ -54,7 +61,6 @@ export default function Configuracoes() {
         setDataConclusao('');
         setDescricao('');
     };
-
 
     const handleOpenPopup = () => {
         setOpenPopup(true);
@@ -131,13 +137,22 @@ export default function Configuracoes() {
                 return null;
             } else if (assignedUsers.length === 1) {
                 return (
-                    <Avatar alt={assignedUsers[0]} src={`https://source.unsplash.com/32x32/?${assignedUsers[0]}`} sx={{ width: 24, height: 24, marginLeft: 10 }} />
+                    <Avatar 
+                        alt={assignedUsers[0]} 
+                        src={`https://source.unsplash.com/32x32/?${assignedUsers[0]}`} 
+                        sx={{ width: 24, height: 24, marginLeft: 10 }} 
+                    />
                 );
             } else {
                 return (
                     <>
                         {assignedUsers.slice(0, 3).map((user, index) => (
-                            <Avatar key={index} alt={user} src={`https://source.unsplash.com/32x32/?${user}`} sx={{ width: 24, height: 24, ml: -1 }} />
+                            <Avatar 
+                                key={index} 
+                                alt={user} 
+                                src={`https://source.unsplash.com/32x32/?${user}`} 
+                                sx={{ width: 24, height: 24, ml: -1 }} 
+                            />
                         ))}
                     </>
                 );
@@ -147,18 +162,31 @@ export default function Configuracoes() {
         const summary = assignedUsers.length === 0 ? "Nenhum atribuído" : renderSummary();
     
         return (
-            <List sx={{ width: '100%' }} component="nav" aria-labelledby="task-list-header">
+            <List 
+                sx={{ width: '100%' }} 
+                component="nav" 
+                aria-labelledby="task-list-header"
+            >
                 <ListItemButton onClick={handleListClick} sx={{ pr: 0 }}>
                     <ListItemIcon sx={{ mr: -3 }}>
                         <GroupOutlinedIcon sx={{ color: '#07382E' }} />
                     </ListItemIcon>
-                    <ListItemText primary="Atribuído:" primaryTypographyProps={{ fontWeight: 'bold' }} />
+
+                    <ListItemText 
+                        primary="Atribuído:"
+                        primaryTypographyProps={{ fontWeight: 'bold' }} 
+                    />
                     {renderAvatars()}
-                    <ListItemText primary={summary} primaryTypographyProps={{ variant: 'body2', fontSize: '0.79rem' }} sx={{ marginLeft:1 }} />
+                    <ListItemText 
+                        primary={summary} 
+                        primaryTypographyProps={{ variant: 'body2', fontSize: '0.79rem' }} 
+                        sx={{ marginLeft:1 }} 
+                    />
                     <IconButton onClick={handleUserListClick}> 
                         {userListOpen ? <ExpandLess /> : <ExpandMore />} 
                     </IconButton>
                 </ListItemButton>
+
                 <Collapse in={open} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                         {assignedUsers.length === 0 ? (
@@ -195,59 +223,78 @@ export default function Configuracoes() {
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
-            <Paper elevation={2} sx={{ mt: 5, p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: "0" }}>
-                <CheckBoxOutlineBlankIcon sx={{ width: 50, height: 100, color: '#07382E', mt: -1 }} />
-                <Typography component="h1" variant="h9" sx={{ color: '#07382E', mt: -1 }}>
+            <Paper elevation={2} 
+                sx={{ mt: 5, p: 2, 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    alignItems: 'center', 
+                    boxShadow: "0" 
+                }}
+            >
+                                 {/* CABEÇALHO  */}
+                <CheckBoxOutlineBlankIcon 
+                    sx={{   width: 50, 
+                            height: 100, 
+                            color: '#07382E', 
+                            mt: -1 
+                    }} 
+                />
+                <Typography 
+                    component="h1" 
+                    variant="h9" 
+                    sx={{ color: '#07382E', mt: -1 }}
+                >
                     Editar Tarefa 
                 </Typography>
 
                 <form onSubmit={handleSubmit}>
-                <Box sx={{ boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', width: '100%', height: '100%', borderRadius: '5px', marginTop: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '-10px' }}>
-                    <Grid container alignItems="center" spacing={1}>
-                        <Grid item>
-                            <IconButton disabled>
-                                <CreateOutlinedIcon sx={{ color: '#07382E', marginLeft: '60%', alignItems: 'center' }} />
-                            </IconButton>
-                        </Grid>
-                        <Grid item>
-                            <Typography variant="subtitle1" gutterBottom sx={{ marginTop: '10%', textAlign: 'center', fontWeight: 'bold' }}>
-                                Título:
-                            </Typography>
-                        </Grid>
-                        <Grid item>
-                        <TextField
-                            fullWidth
-                            value={titulo}
-                            onChange={(event) => setTitulo(event.target.value)}
-                            variant="standard"
-                        />
-                        </Grid>
-                    </Grid>
-                </Box>
-
-                <Box sx={{ boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', width: '100%', height: '100%', borderRadius: '5px', marginTop: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '-10px' }}>
-                    <Grid container alignItems="center" spacing={1}>
-                        <Grid item>
-                            <IconButton disabled>
-                                <CalendarMonthIcon sx={{ color: '#07382E', marginLeft: '60%' }} />
-                            </IconButton>
-                        </Grid>
-                        <Grid item>
-                            <Typography variant="subtitle1" gutterBottom sx={{ marginTop: '5%', textAlign: 'center', fontWeight: 'bold' }}>
-                                Data de Conclusão:
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={4.5}>
+                    <Box sx={{ boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', width: '100%', height: '100%', borderRadius: '5px', marginTop: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '-10px' }}>
+                        <Grid container alignItems="center" spacing={1}>
+                            <Grid item>
+                                <IconButton disabled>
+                                    <CreateOutlinedIcon sx={{ color: '#07382E', marginLeft: '60%', alignItems: 'center' }} />
+                                </IconButton>
+                            </Grid>
+                            <Grid item>
+                                <Typography variant="subtitle1" gutterBottom sx={{ marginTop: '10%', textAlign: 'center', fontWeight: 'bold' }}>
+                                    Título:
+                                </Typography>
+                            </Grid>
+                            <Grid item>
                             <TextField
                                 fullWidth
-                                type="date"
-                                value={dataConclusao}
-                                onChange={(event) => setDataConclusao(event.target.value)}
+                                value={titulo}
+                                onChange={(event) => setTitulo(event.target.value)}
                                 variant="standard"
                             />
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </Box>
+                    </Box>
+
+                    <Box 
+                    sx={{ boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', width: '100%', height: '100%', borderRadius: '5px', marginTop: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '-10px' }}>
+                        <Grid container alignItems="center" spacing={1}>
+                            <Grid item>
+                                <IconButton disabled>
+                                    <CalendarMonthIcon sx={{ color: '#07382E', marginLeft: '60%' }} />
+                                </IconButton>
+                            </Grid>
+                            <Grid item>
+                                <Typography variant="subtitle1" gutterBottom sx={{ marginTop: '5%', textAlign: 'center', fontWeight: 'bold' }}>
+                                    Data de Conclusão:
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={4.5}>
+                                <TextField
+                                    fullWidth
+                                    type="date"
+                                    value={dataConclusao}
+                                    onChange={(event) => setDataConclusao(event.target.value)}
+                                    variant="standard"
+                                />
+                            </Grid>
+                        </Grid>
+                    </Box>
 
                 <Box sx={{ boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', width: '100%', height: '100%', borderRadius: '5px', marginTop: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '-10px' }}>
                     <TaskList />
@@ -332,46 +379,81 @@ borderColor: "#07382E",
     </Button>
     </Grid>
 </Grid>
-            
+
+                                    {/* ABERTURA DE POP-UP  */}
             <Popup open={openPopup} handleClose={handleClosePopup} />
-                
+
+                                    {/* MENU PRINCIPAL   */}
             <Box elevation={3} >
 
-<BottomNavigation
-sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: '#5DA18F80', height: '9%'}}
-    showLabels
-    value={value}
-    onChange={(event, newValue) => {
-    setValue(newValue);
-    }}
+            <BottomNavigation
+                showLabels
+                value={value}
+                onChange={(event, newValue) => {
+                setValue(newValue);
+                }}
+                sx={{  position: 'fixed', 
+                        bottom: 0, 
+                        left: 0, 
+                        right: 0, 
+                        backgroundColor: '#5DA18F80', 
+                        height: '9%'
+                }}
+            >
 
-        >
+            <BottomNavigationAction 
+                onClick={handleHome}
+                label="Home" 
+                icon={<HomeIcon 
+                    sx={{ fill: value === 0 ? '#07382E' : 'none', 
+                        stroke: '#07382E', 
+                        strokeWidth: 2, 
+                        fontSize: '2rem' 
+                    }} 
+                />}
+                    sx={{ color:  '#07382E', 
+                        fontSize: '3em', 
+                        fontWeight: 'bold', 
+                        '& .MuiBottomNavigationLabel': { gap: '10x' } 
+                }}
+            />
 
-<BottomNavigationAction 
-    onClick={handleHome}
-    label="Home" 
-    icon={<HomeIcon sx={{ fill: value === 0 ? '#07382E' : 'none', stroke: '#07382E', strokeWidth: 2, fontSize: '2rem' }} />}
-    sx={{ color:  '#07382E', fontSize: '3em', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10x' } }}
-/>
+            <BottomNavigationAction 
+                onClick={handleProgresso}
+                label="Progresso" 
+                icon={<SchoolIcon 
+                        sx={{ fill: value === 1 ? '#07382E' : 'none', 
+                            stroke: '#07382E', 
+                            strokeWidth: 2, 
+                            fontSize: '2rem' }} 
+                    />}
+                        sx={{ color: '#07382E', 
+                            fontSize: '2rem', 
+                            fontWeight: 'bold', 
+                            '& .MuiBottomNavigationLabel': { gap: '10px' } 
+                        }}
+            />
 
-<BottomNavigationAction 
-    onClick={handleProgresso}
-    label="Progresso" 
-    icon={<SchoolIcon sx={{ fill: value === 1 ? '#07382E' : 'none', stroke: '#07382E', strokeWidth: 2, fontSize: '2rem' }} />}
-    sx={{ color: '#07382E', fontSize: '2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }}
-/>
+            <BottomNavigationAction 
+                onClick={handleAvaliacao}
+                label="Avaliação" 
+                icon={<StarIcon 
+                        sx={{ fill: value === 2 ? '#07382E' : 'none', 
+                            stroke: '#07382E', 
+                            strokeWidth: 2, 
+                            fontSize: '2rem'  }} 
+                    />}
+                        sx={{ color: '#07382E', 
+                            fontSize: '2rem', 
+                            fontWeight: 'bold', 
+                            '& .MuiBottomNavigationLabel': { gap: '10px' } 
+                        }}
+            />
 
-<BottomNavigationAction 
-    onClick={handleAvaliacao}
-    label="Avaliação" 
-    icon={<StarIcon sx={{ fill: value === 2 ? '#07382E' : 'none', stroke: '#07382E', strokeWidth: 2, fontSize: '2rem'  }} />}
-    sx={{ color: '#07382E', fontSize: '2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }}
-/>
+        </BottomNavigation>
 
-</BottomNavigation>
+        </Box>
 
-</Box>
-                
             </Paper>
         </Container>
     );

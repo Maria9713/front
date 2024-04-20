@@ -1,25 +1,27 @@
- 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Container, CssBaseline, Paper, Typography, IconButton, Checkbox, Grid, Avatar, Stack } from '@mui/material';
-import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
+import { Box, Container, CssBaseline, Paper, Typography, Checkbox, Grid, Avatar } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Fab from '@mui/material/Fab';
+
+// IMPORT ICONES
+import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeIcon from '@mui/icons-material/Home';
 import SchoolIcon from '@mui/icons-material/School';
 import StarIcon from '@mui/icons-material/Star';
 
-export default function Configuracoes() {
+
+export default function Central_Tarefa() {
     const navigate = useNavigate();
 
     const handleNovaTarefa = () => {
         navigate('/Criar_Tarefa');
-      };
+    };
 
-      const handleHome= () => {
+    const handleHome= () => {
         navigate('/');
     };
 
@@ -130,7 +132,11 @@ export default function Configuracoes() {
                                     spacing={1}
                                 >
                                     <Grid item>
-                                        <Typography variant="h6" component="h2"sx={{ fontSize: '1.2rem' }}>
+                                        <Typography 
+                                            variant="h6" 
+                                            component="h2"
+                                            sx={{ fontSize: '1.2rem' }}
+                                        >
                                             NOME DA TAREFA
                                         </Typography>
                                     </Grid>
@@ -153,7 +159,10 @@ export default function Configuracoes() {
                                         height: 'fit-content', 
                                     }}
                                 >
-                                    <Typography variant="body2"sx={{ fontSize: '0.70rem' }}>
+                                    <Typography 
+                                        variant="body2"
+                                        sx={{ fontSize: '0.70rem' }}
+                                    >
                                         Termina em {diasRestantes} dias
                                     </Typography>
                                 </Box>
@@ -175,7 +184,12 @@ export default function Configuracoes() {
                                         />
                                     ))}
 
-                                    <Typography variant="body2" sx={{ fontSize: '0.70rem',marginLeft: '8px' }}>
+                                    <Typography 
+                                    variant="body2" 
+                                    sx={{   fontSize: '0.70rem',
+                                            marginLeft: '8px' 
+                                        }}
+                                    >
                                     {usuariosAtribuidos.map(usuario => usuario.nome).join(', ')} e mais {usuariosAtribuidos.length - maxAvatares} pessoas
                                     </Typography>
 
@@ -185,11 +199,20 @@ export default function Configuracoes() {
 
                     </Card>
                     
-                    <Typography component="h2" variant="h6" sx={{ marginTop: '15px' }}>
+                    <Typography 
+                        component="h2" 
+                        variant="h6" 
+                        sx={{ marginTop: '15px' }}
+                    >
                         Tarefas Concluídas
                     </Typography>
                     
-                    <Box sx={{ position: 'fixed', marginTop: '45%', marginLeft: '20%' }}>
+                    <Box 
+                        sx={{   position: 'fixed', 
+                                mt:90, 
+                                marginLeft: '20%' 
+                            }}
+                    >
                         <Fab
                             onClick={handleNovaTarefa}
                             variant="extended"
@@ -202,50 +225,84 @@ export default function Configuracoes() {
                                 }
                             }}
                         >
-                            <Typography sx={{ color: "#ffffff !important" }}>
+                            <Typography 
+                                sx={{ color: "#ffffff !important" }}
+                            >
                                 Nova Tarefa
                             </Typography>
                         </Fab>
                     </Box>
 
+                                                        {/* MENU PRINCIPAL */}
 
                     <Box elevation={3} >
 
-<BottomNavigation
-sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: '#5DA18F80', height: '9%'}}
-    showLabels
-    value={value}
-    onChange={(event, newValue) => {
-    setValue(newValue);
-    }}
+                        <BottomNavigation
+                            showLabels
+                            value={value}
+                            onChange={(event, newValue) => {
+                            setValue(newValue);
+                            }}
+                            sx={{   position: 'fixed', 
+                                    bottom: 0, 
+                                    left: 0, 
+                                    right: 0, 
+                                    backgroundColor: '#5DA18F80', 
+                                    height: '9%'
+                                }}
+                        >
 
-        >
+                        <BottomNavigationAction 
+                            onClick={handleHome}
+                            label="Home" 
+                            icon={<HomeIcon 
+                                sx={{   fill: value === 0 ? '#07382E' : 'none', 
+                                        stroke: '#07382E', 
+                                        strokeWidth: 2, 
+                                        fontSize: '2rem' 
+                                    }} 
+                                />}
+                                sx={{ color:  '#07382E', 
+                                    fontSize: '3em', 
+                                    fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10x' } 
+                                }}
+                        />
 
-<BottomNavigationAction 
-    onClick={handleHome}
-    label="Home" 
-    icon={<HomeIcon sx={{ fill: value === 0 ? '#07382E' : 'none', stroke: '#07382E', strokeWidth: 2, fontSize: '2rem' }} />}
-    sx={{ color:  '#07382E', fontSize: '3em', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10x' } }}
-/>
+                        <BottomNavigationAction 
+                            onClick={handleProgresso}
+                            label="Progresso" 
+                            icon={<SchoolIcon 
+                                sx={{   fill: value === 1 ? '#07382E' : 'none', 
+                                        stroke: '#07382E', 
+                                        strokeWidth: 2, 
+                                        fontSize: '2rem' 
+                                    }} 
+                                />}
+                                sx={{   color: '#07382E', 
+                                        fontSize: '2rem', 
+                                        fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } 
+                                    }}
+                        />
 
-<BottomNavigationAction 
-    onClick={handleProgresso}
-    label="Progresso" 
-    icon={<SchoolIcon sx={{ fill: value === 1 ? '#07382E' : 'none', stroke: '#07382E', strokeWidth: 2, fontSize: '2rem' }} />}
-    sx={{ color: '#07382E', fontSize: '2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }}
-/>
+                        <BottomNavigationAction 
+                            onClick={handleAvaliacao}
+                            label="Avaliação" 
+                            icon={<StarIcon 
+                                sx={{   fill: value === 2 ? '#07382E' : 'none', 
+                                        stroke: '#07382E', 
+                                        strokeWidth: 2, 
+                                        fontSize: '2rem'  
+                                    }} 
+                                />}
+                                sx={{   color: '#07382E', 
+                                        fontSize: '2rem', 
+                                        fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } 
+                                    }}
+                        />
 
-<BottomNavigationAction 
-    onClick={handleAvaliacao}
-    label="Avaliação" 
-    icon={<StarIcon sx={{ fill: value === 2 ? '#07382E' : 'none', stroke: '#07382E', strokeWidth: 2, fontSize: '2rem'  }} />}
-    sx={{ color: '#07382E', fontSize: '2rem', fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } }}
-/>
+                        </BottomNavigation>
 
-</BottomNavigation>
-
-</Box>
-                    
+                    </Box>
 
                 </Paper>
 
