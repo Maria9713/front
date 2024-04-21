@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { Box, Button, Container, CssBaseline, Paper, Typography, IconButton, 
         Grid, List, ListItemButton, ListItemIcon, ListItemText, Collapse, Avatar, 
         Menu, MenuItem, Checkbox, TextField } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 
@@ -186,8 +187,7 @@ export default function Criar_Tarefa() {
                     <ListItemIcon 
                         sx={{ mr: -3 }}>
                         <GroupOutlinedIcon 
-                            sx={{ color: '#07382E' }} 
-                        />
+                            sx={{ color: '#07382E' }} />
                     </ListItemIcon>
 
                     <ListItemText 

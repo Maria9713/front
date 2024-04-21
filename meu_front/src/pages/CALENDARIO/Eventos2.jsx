@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Box, Button, Container, CssBaseline,
-        Paper, Typography, IconButton, Grid, 
-        List, ListItemButton, ListItemIcon, ListItemText, 
+import { useNavigate } from 'react-router-dom';
+import {TextField, Box, Button, Container, CssBaseline, Paper, Typography, 
+        IconButton, Grid, List, ListItemButton, ListItemIcon, ListItemText, 
         Collapse, Avatar, Menu, MenuItem, Checkbox } from '@mui/material';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+
+// IMPORTS DE ICONES 
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-                // IMPORTS DE ICONES 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -15,18 +16,46 @@ import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
 import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import AlarmIcon from '@mui/icons-material/Alarm';
-                // IMPORTS ICONES MENU 
+
+// IMPORTS ICONES MENU 
 import HomeIcon from '@mui/icons-material/Home';
 import SchoolIcon from '@mui/icons-material/School';
 import StarIcon from '@mui/icons-material/Star';
-                // IMPORT POP-UP 
+
+// IMPORT POP-UP 
 import Popup from './POP-UP1';
 
-
-
 export default function CriarEvento() {
+    const [titulo, setTitulo] = useState('');
+    const [data, setData] = useState('');
+    const [hora, setHora] = useState('');
+    const [descricao, setDescricao1] = useState('');
+    const navigate = useNavigate();
 
-    // POP-UP 
+    const handleHome = () => {
+        navigate('/');
+    };
+
+    const handleProgresso = () => {
+        navigate('/');
+    };
+
+    const handleAvaliacao = () => {
+        navigate('/');
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log('Título:', titulo);
+        console.log('Data :', data);
+        console.log('Hora :', hora);
+        console.log('Descrição:', descricao);
+        setTitulo('');
+        setData('');
+        setHora('');
+        setDescricao1('');
+    };
+
     const [openPopup, setOpenPopup] = useState(false);
 
     const handleOpenPopup = () => {
@@ -37,30 +66,19 @@ export default function CriarEvento() {
         setOpenPopup(false);
     };
 
-    //  BOTÃO VOLTAR
     const handleBack = () => {};
 
-    // Estado e função para atualizar o valor do BottomNavigation
     const [value, setValue] = React.useState(0);
-
-     // DESCRIÇÃO DO EVENTO
-    const descricao = "Descrição do Evento"; 
-
-    // Estado e função para atualizar a lista de usuários atribuídos à tarefa
-    const [assignedUsers, setAssignedUsers] = useState(["João", "Maria", "Carlos", "Ana", "Pedro"]);
-
-      // Estado e função para atualizar o elemento de ancoragem do menu de usuários
+    
+    const [assignedUsers, setAssignedUsers] = 
+    useState(["João", "Maria", "Carlos", "Ana", "Pedro"]);
     const [anchorEl, setAnchorEl] = useState(null);
-
-    // Variável booleana para verificar se o menu de usuários está aberto
     const openMenu = Boolean(anchorEl);
 
-    // Função de retorno de chamada para lidar com o clique no menu
     const handleMenuClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
 
-    // Função de retorno de chamada para lidar com o clique nos itens do menu
     const handleMenuItemClick = (user) => {
         const index = assignedUsers.indexOf(user);
         if (index === -1) {
@@ -72,12 +90,10 @@ export default function CriarEvento() {
         }
     };
 
-     // Função de retorno de chamada para fechar o menu
     const handleClose = () => {
         setAnchorEl(null);
     };
 
-    // Componente do menu de usuários atribuídos
     const UserListMenu = () => {
         return (
             <Menu
@@ -89,8 +105,14 @@ export default function CriarEvento() {
                 }}
             >
                 {getAllUsers().map((user, index) => (
-                    <MenuItem key={index} onClick={() => handleMenuItemClick(user)}>
-                        <Checkbox checked={assignedUsers.includes(user)} />
+                    <MenuItem 
+                        key={index} 
+                        onClick={() => 
+                        handleMenuItemClick(user)}
+                    >
+                        <Checkbox 
+                            checked={assignedUsers.includes(user)} 
+                        />
                         <ListItemText primary={user} />
                     </MenuItem>
                 ))}
@@ -98,15 +120,17 @@ export default function CriarEvento() {
         );
     };
 
-    // Função para obter todos os usuários disponíveis
     const getAllUsers = () => {
-        // Aqui você deve retornar todos os usuários disponíveis
-        // Por enquanto, vamos apenas retornar uma lista fixa
-        const allUsers = ['João', 'Maria', 'Carlos', 'Ana', 'Pedro'];
+        const allUsers = [
+            'João', 
+            'Maria', 
+            'Carlos', 
+            'Ana', 
+            'Pedro'
+        ];
         return allUsers;
     };
 
-     // Componente da lista de tarefas
     const TaskList = () => {
         const [open, setOpen] = useState(false);
 
@@ -114,28 +138,34 @@ export default function CriarEvento() {
             setOpen(!open);
         };
 
-    // Função para renderizar avatares dos usuários atribuídos
-    const renderAvatars = () => {
+        const renderAvatars = () => {
             if (assignedUsers.length === 0) {
                 return null;
             } else if (assignedUsers.length === 1) {
                 return (
-                    <Avatar 
-                        alt={assignedUsers[0]} 
-                        src={`https://source.unsplash.com/32x32/?${assignedUsers[0]}`} 
-                        sx={{ width: 24, height: 24, marginLeft: 10 }} 
+                    <Avatar
+                        alt={assignedUsers[0]}
+                        src={`https://source.unsplash.com/32x32/?${assignedUsers[0]}`}
+                        sx={{
+                            width: 24,
+                            height: 24,
+                            marginLeft: 10
+                        }}
                     />
                 );
             } else {
-
                 return (
-                
                     <>
                         {assignedUsers.slice(0, 3).map((user, index) => (
-                            <Avatar 
-                                key={index} alt={user} 
-                                src={`https://source.unsplash.com/32x32/?${user}`} 
-                                sx={{ width: 24, height: 24, ml: -1 }} 
+                            <Avatar
+                                key={index}
+                                alt={user}
+                                src={`https://source.unsplash.com/32x32/?${user}`}
+                                sx={{
+                                    width: 24,
+                                    height: 24,
+                                    ml: -1
+                                }}
                             />
                         ))}
                     </>
@@ -146,52 +176,70 @@ export default function CriarEvento() {
         const summary = renderSummary();
 
         return (
-
-                <List 
-                    sx={{ width: '100%' }} 
-                    component="nav" 
-                    aria-labelledby="task-list-header"
+            <List 
+                sx={{ width: '100%' }} 
+                component="nav" 
+                aria-labelledby="task-list-header"
+            >
+                <ListItemButton 
+                    onClick={handleClick} 
+                    sx={{ pr: -0 }}
                 >
-                    <ListItemButton 
-                        onClick={handleClick} 
-                        sx={{ pr: -1 }}
-                    >
-                            <ListItemIcon 
-                                sx={{ mr: -3 }}
-                            >
-                                <GroupOutlinedIcon 
-                                    sx={{ color: '#07382E' }} 
-                                />
-                            </ListItemIcon>
-                            <ListItemText 
-                                primary="Convidar:" 
-                                primaryTypographyProps={{ fontWeight: 'bold' }} 
-                            />
-                                {renderAvatars()}
-                            <ListItemText 
-                                primary={summary} 
-                                primaryTypographyProps={{ variant: 'body2', fontSize: '0.8rem' }} 
-                                sx={{ marginLeft: 2 }} 
-                            />
-                            
-                            <IconButton onClick={handleMenuClick}>
-                                {open ? <ExpandLess /> : <ExpandMore />}
-                            </IconButton>
-                    </ListItemButton>
+                    <ListItemIcon 
+                        sx={{ mr: -3 }}>
+                        <GroupOutlinedIcon 
+                        sx={{ color: '#07382E' }}/>
+                    </ListItemIcon>
 
-                <Collapse in={open} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
+                    <ListItemText 
+                        primary="Convidar:" 
+                        primaryTypographyProps={{ 
+                            fontWeight: 'bold' 
+                            }} 
+                    />
+                        {renderAvatars()}
+                    <ListItemText 
+                        primary={summary} 
+                        primaryTypographyProps={{ 
+                            variant: 'body2', 
+                            fontSize: '0.79rem' 
+                            }} 
+                        sx={{ 
+                            marginLeft: 1 
+                            }} 
+                    />
+                    <IconButton 
+                    onClick={handleMenuClick}>
+                        {open ? <ExpandLess /> : <ExpandMore />}
+                    </IconButton>
+                </ListItemButton>
+
+                <Collapse 
+                    in={open} 
+                    timeout="auto" 
+                    unmountOnExit
+                >
+                    <List 
+                    component="div" 
+                    disablePadding
+                    >
                         {getAllUsers().map((user, index) => (
-                            <ListItemButton key={index} sx={{ pl: 4 }}>
+                            <ListItemButton     
+                                key={index} 
+                                sx={{ pl: 4 }}
+                            >
                                 <Checkbox 
-                                    checked={assignedUsers.includes(user)} o
-                                    nClick={() => handleMenuItemClick(user)} 
+                                    checked={assignedUsers.includes(user)} 
+                                    onClick={() => 
+                                    handleMenuItemClick(user)} 
                                 />
                                 <Avatar 
                                     alt={user} 
-                                    src={`https://source.unsplash.com/32x32/?${user}`} 
+                                    src={`https://source.unsplash.com/32x32/?${user}`}
                                 />
-                                <ListItemText primary={user} />
+                                <ListItemText 
+                                    primary={user} 
+                                />
                             </ListItemButton>
                         ))}
                     </List>
@@ -206,346 +254,410 @@ export default function CriarEvento() {
         } else if (assignedUsers.length <= 3) {
             return assignedUsers.join(", ");
         } else {
-            return `${assignedUsers[0]} e +${assignedUsers.length - 1} pessoas`;
+            return `${assignedUsers[0]} 
+            e +${assignedUsers.length - 1} pessoas`;
         }
     };
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Container 
+            component="main" 
+            maxWidth="xs"
+        >
             <CssBaseline />
-                <Paper 
-                    elevation={2} 
-                    sx={{ mt: 5, p: 2, 
-                        display: 'flex', 
-                        flexDirection: 'column', 
-                        alignItems: 'center', 
-                        boxShadow: "0" 
+            <Paper 
+                elevation={2} 
+                sx={{
+                    mt: -2, 
+                    p: 2, 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    alignItems: 'center', 
+                    boxShadow: "0" 
                     }}
+            >
+                <IconButton 
+                    onClick={handleBack} 
+                    sx={{ alignSelf: 'flex-start' }}
                 >
-
-                    {/* CABEÇALHO */}
-                    <IconButton 
-                        onClick={handleBack} 
-                        sx={{ alignSelf: 'flex-start' }}
-                    >
-                        <ArrowBackIcon sx={{ fontSize: 35 }} />
-                    </IconButton>
-                    <EditCalendarIcon 
-                        sx={{   width: 50, 
-                                height: 100, 
-                                color: '#07382E' 
-                        }} 
+                    <ArrowBackIcon 
+                        sx={{ fontSize: 35 }} 
                     />
-                    <Typography 
-                        component="h1" 
-                        variant="h9" 
-                        sx={{   color: '#07382E', 
-                                mt: -1 
-                        }}
-                    >
-                            Novo Evento 
-                    </Typography>
+                </IconButton>
 
-                    {/* CAMPO DE TÍTULO TAREFA  */}
+                <EditCalendarIcon 
+                    sx={{ 
+                        width: 50, 
+                        height: 100, 
+                        color: '#07382E' 
+                        }} 
+                />
+
+                <Typography 
+                    component="h1" 
+                    variant="h9" 
+                    sx={{ 
+                        color: '#07382E', 
+                        mt: -1 
+                        }}
+                >
+                    Novo Evento
+                </Typography>
+
+                <form 
+                    onSubmit={handleSubmit}
+                >
+                                            {/* CAMPO TITULO EVENTO  */}
                     <Box 
-                        sx={{   boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
-                                width: '100%', 
-                                height: '100%', 
-                                borderRadius: '5px', 
-                                marginTop: '5%', 
-                                display: 'flex', 
-                                justifyContent: 'center', 
-                                alignItems: 'center', 
-                                padding: '-10px' 
+                        sx={{ 
+                            boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
+                            width: '100%', 
+                            height: '100%', 
+                            borderRadius: '5px', 
+                            marginTop: '5%', 
+                            display: 'flex', 
+                            justifyContent: 'center', 
+                            alignItems: 'center', 
+                            padding: '-10px' 
                             }}
                     >
-                        <Grid container alignItems="center" spacing={1}>
+                        <Grid 
+                            container 
+                            alignItems="center" 
+                            spacing={1}
+                        >
+
                             <Grid item>
                                 <IconButton disabled>
                                     <CreateOutlinedIcon 
-                                        sx={{   color: '#07382E', 
-                                                marginLeft: '60%', 
-                                                alignItems: 'center' 
-                                        }} 
+                                        sx={{ 
+                                            color: '#07382E', 
+                                            marginLeft: '60%', 
+                                            alignItems: 'center' 
+                                            }} 
                                     />
-                                </IconButton>
-                            </Grid>
-
-                            <Grid item>
-                                <Typography variant="subtitle1" gutterBottom 
-                                    sx={{   marginTop: '10%', 
-                                            textAlign: 'center', 
-                                            fontWeight: 'bold' 
-                                    }}
-                                >
-                                    Título:
-                                </Typography>
-                            </Grid>
-
-                            <Grid item>
-                                <Typography variant="body1" paragraph 
-                                    sx={{   textAlign: 'center', 
-                                            marginTop: '20%', 
-                                            marginLeft: '10%' 
-                                    }}
-                                >
-                                    {/* {task.dueDate} */}
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                    </Box>
-
-                                    {/**************************************** CAMPO DE  DATA  ****************************************/}
-                    <Box 
-                        sx={{   boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
-                                width: '100%', 
-                                height: '100%', 
-                                borderRadius: '5px', 
-                                marginTop: '5%', 
-                                display: 'flex', 
-                                justifyContent: 'center', 
-                                alignItems: 'center', 
-                                padding: '-10px' 
-                        }}
-                    >
-                        <Grid container alignItems="center" spacing={1}>
-
-                            <Grid item>
-                                <IconButton disabled>
-                                    <CalendarMonthIcon 
-                                    sx={{   color: '#07382E', 
-                                            marginLeft: '60%' 
-                                        }} 
-                                    />
-                                </IconButton>
-                            </Grid>
-
-                            <Grid item>
-                                <Typography variant="subtitle1" gutterBottom
-                                    sx={{   marginTop: '5%', 
-                                            textAlign: 'center', 
-                                            fontWeight: 'bold' 
-                                    }}
-                                >
-                                    Data:
-                                </Typography>
-                            </Grid>
-
-                            <Grid item>
-                                <Typography variant="body1" paragraph
-                                    sx={{   textAlign: 'center', 
-                                            marginTop: '20%', 
-                                            marginLeft: '10%' 
-                                    }}
-                                >
-                                    {/* {task.dueDate} */}
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                    </Box>
-
-                    {/**************************************** CAMPO DE  HORA  ****************************************/}
-                    <Box 
-                        sx={{   boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
-                                width: '100%', 
-                                height: '100%', 
-                                borderRadius: '5px', 
-                                marginTop: '5%', 
-                                display: 'flex', 
-                                justifyContent: 'center', 
-                                alignItems: 'center', 
-                                padding: '-10px' 
-                        }}
-                    >
-                        <Grid container alignItems="center" spacing={1}>
-                            <Grid item>
-                                <IconButton disabled>
-                                    <AlarmIcon 
-                                        sx={{   color: '#07382E', 
-                                                marginLeft: '60%' 
-                                        }} 
-                                    />
-                                </IconButton>
-                            </Grid>
-
-                            <Grid item>
-                                <Typography variant="subtitle1" gutterBottom 
-                                    sx={{   marginTop: '5%', 
-                                            textAlign: 'center', 
-                                            fontWeight: 'bold' 
-                                    }}
-                                >
-                                    Horario:
-                                </Typography>
-                            </Grid>
-
-                            <Grid item>
-                                <Typography variant="body1" paragraph 
-                                    sx={{   textAlign: 'center', 
-                                            marginTop: '20%', 
-                                            marginLeft: '10%' 
-                                    }}
-                                >
-                                    {/* {task.dueDate} */}
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                    </Box>
-
-                    {/***************************************** CAMPO DE ATRIBUIR  *****************************************/}
-                    <Box 
-                        sx={{   boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
-                                width: '100%', 
-                                height: '100%', 
-                                borderRadius: '5px', 
-                                marginTop: '5%', 
-                                display: 'flex', 
-                                justifyContent: 'center', 
-                                alignItems: 'center', 
-                                padding: '-10px' 
-                        }}
-                    >
-                        <TaskList />
-                    </Box>
-
-                    {/***************************************** CAMPO DE DESCRIÇÃO  *****************************************/}
-                    <Box
-                        sx={{
-                            boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)',
-                            width: '100%',
-                            height: '100%',
-                            borderRadius: '5px',
-                            marginTop: '5%',
-                            display: 'flex',
-                            flexDirection: 'column', 
-                            alignItems: 'flex-start', 
-                            padding: '10px'
-                        }}
-                    >
-                        <Grid container alignItems="center" spacing={1}>
-                            <Grid item>
-                                <IconButton disabled>
-                                    <EditNoteOutlinedIcon 
-                                        sx={{ color: '#07382E' }} 
-                                    /> 
                                 </IconButton>
                             </Grid>
 
                             <Grid item>
                                 <Typography 
-                                    variant="subtitle1" gutterBottom 
+                                    variant="subtitle1" 
+                                    gutterBottom 
+                                    sx={{ 
+                                        marginTop: '10%', 
+                                        textAlign: 'center', 
+                                        fontWeight: 'bold' 
+                                        }}
+                                >
+                                        Título:
+                                </Typography>
+                            </Grid>
+
+                            <Grid item>
+                                <TextField 
+                                    fullWidth 
+                                    value={titulo}
+                                    onChange={(event) =>
+                                    setTitulo(event.target.value)} 
+                                    variant="standard" 
+                                />
+                            </Grid>
+
+                        </Grid>
+                    </Box>
+                                                    {/* CAMPO DATA EVENTO  */}
+                    <Box 
+                        sx={{ 
+                            boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)',
+                            width: '100%', 
+                            height: '100%', 
+                            borderRadius: '5px', 
+                            marginTop: '5%', 
+                            display: 'flex', 
+                            justifyContent: 'center', 
+                            alignItems: 'center', 
+                            padding: '-10px' 
+                            }}
+                    >
+                        <Grid 
+                            container 
+                            alignItems="center" 
+                            pacing={1}
+                        >
+
+                            <Grid item>
+                                <IconButton disabled>
+                                    <CalendarMonthIcon 
+                                        sx={{ 
+                                            color: '#07382E',
+                                            marginLeft: '60%' 
+                                            }} 
+                                    />
+                                </IconButton>
+                            </Grid>
+
+                            <Grid item>
+                                <Typography 
+                                    variant="subtitle1" 
+                                    gutterBottom 
+                                    sx={{ 
+                                        marginTop: '5%', 
+                                        textAlign: 'center', 
+                                        fontWeight: 'bold' 
+                                        }}
+                                >
+                                        Data:
+                                </Typography>
+                            </Grid>
+
+                            <Grid item>
+                                <TextField 
+                                    fullWidth 
+                                    type="date" 
+                                    value={data} 
+                                    onChange={(event) => 
+                                    setData(event.target.value)} 
+                                    variant="standard" 
+                                />
+                            </Grid>
+                        </Grid>
+                                                {/* CAMPO HORARIO  */}
+                    </Box>
+                    <Box 
+                        sx={{ 
+                            boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
+                            width: '100%', 
+                            height: '100%', 
+                            borderRadius: '5px', 
+                            marginTop: '5%', 
+                            display: 'flex', 
+                            justifyContent: 'center', 
+                            alignItems: 'center', 
+                            padding: '-10px' 
+                        }}
+                    >
+                        <Grid 
+                            container 
+                            alignItems="center" 
+                            spacing={1}
+                        >
+                            <Grid item>
+                                <IconButton disabled>
+                                    <AlarmIcon 
+                                        sx={{ 
+                                            color: '#07382E', 
+                                            marginLeft: '60%' 
+                                            }} 
+                                    />
+                                </IconButton>
+                            </Grid>
+
+                            <Grid item>
+                                <Typography 
+                                    variant="subtitle1" 
+                                    gutterBottom 
+                                    sx={{ 
+                                        marginTop: '5%', 
+                                        textAlign: 'center', 
+                                        fontWeight: 'bold' 
+                                        }}
+                                >
+                                        Horario:
+                                </Typography>
+                            </Grid>
+
+                            <Grid item>
+                                <TextField 
+                                    fullWidth 
+                                    type="time" 
+                                    value={hora} 
+                                    onChange={(event) => 
+                                    setHora(event.target.value)} 
+                                    variant="standard" 
+                                />
+                            </Grid>
+
+                        </Grid>
+                    </Box>
+                                                {/* CAMPO CONVIDAR  */}
+                    <Box 
+                        sx={{ 
+                            boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
+                            width: '100%', 
+                            height: '100%', 
+                            borderRadius: '5px', 
+                            marginTop: '5%', 
+                            display: 'flex', 
+                            justifyContent: 'center', 
+                            alignItems: 'center', 
+                            padding: '-10px' 
+                            }}
+                        >
+                        <TaskList />
+                    </Box>
+                                                {/* CAMPO DESCRIÇÃO EVENTO  */}
+                    <Box 
+                        sx={{ 
+                            boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
+                            width: '100%', 
+                            height: '100%', 
+                            borderRadius: '5px', 
+                            marginTop: '5%', 
+                            display: 'flex', 
+                            flexDirection: 'column', 
+                            alignItems: 'flex-start',
+                            padding: '10px' 
+                            }}
+                    >
+                        <Grid container alignItems="center" spacing={1}>
+                            <Grid item>
+                                <IconButton disabled>
+                                    <EditNoteOutlinedIcon 
+                                        sx={{ color: '#07382E' }}
+                                    />
+                                </IconButton>
+                            </Grid>
+                            <Grid item>
+                                <Typography 
+                                    variant="subtitle1" 
+                                    gutterBottom 
                                     sx={{ fontWeight: 'bold' }}
                                 >
                                     Descrição:
                                 </Typography>
                             </Grid>
+
                             <Grid item>
-                                <Typography variant="body1" paragraph 
-                                    sx={{   textAlign: 'left',
-                                            marginTop: '2px', 
-                                            marginLeft: '3%' 
-                                        }}
-                                >
-                                    {descricao}
-                                </Typography>
+                                <TextField 
+                                fullWidth 
+                                value={descricao} 
+                                onChange={(event) => 
+                                setDescricao1(event.target.value)} 
+                                variant="standard" 
+                                />
                             </Grid>
                         </Grid>
+                                                {/* BOTÃO CRIAR EVENTO  */}
                     </Box>
-
-                    {/***************************************** BOTÃO CRIAR  *****************************************/}
-                <Grid container justifyContent="center" alignItems="center" spacing={2}>
-                    <Grid item xs={6}>
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="outlined"
-                            sx={{
-                                mt: 2,
-                                mb: 5,
-                                maxWidth: "180px",
-                                alignItems: "center",
-                                backgroundColor: "#FFFFFF",
-                                color: "#07382E",
-                                borderColor: "#07382E",
-                                "&:hover": { backgroundColor: "#07382E", color: "#FFFFFF" }
-                            }}
-                            onClick={handleOpenPopup} // Adicione esta linha para abrir o pop-up ao clicar no botão
-                        >
-                            CRIAR EVENTO
-                        </Button>
-                    </Grid>
-                </Grid>
-                    {/***************************************** POP-UP AQUI!  *****************************************/}
-                <Popup open={openPopup} handleClose={handleClosePopup} />
-            
-
-
-                    {/***************************************** MENU FIXO  *****************************************/}
-                    <Box 
-                        elevation={3} 
-                        sx={{ 
-                            position: 'fixed', 
-                            bottom: 0, 
-                            left: 0, 
-                            right: 0, 
-                            backgroundColor: '#5DA18F' 
-                            }}
+                    <Grid 
+                        container 
+                        justifyContent="center" 
+                        alignItems="center" 
+                        spacing={2}
                     >
-                        <BottomNavigation 
-                            showLabels value={value} 
-                            onChange={(event, newValue) => 
-                            { setValue(newValue); }}
-                        >
-                            <BottomNavigationAction 
-                                label="Home" 
-                                icon={<HomeIcon 
-                                    sx={{ 
-                                        fill: 'none', 
-                                        stroke: '#07382E', 
-                                        strokeWidth: 2 }} 
-                                />} 
-                                sx={{ 
-                                    fontSize: '1.2rem', 
-                                    fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } 
-                                    }} 
-                            />
+                        <Grid item xs={6}>
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="outlined"
+                                sx={{
+                                    mt: 2,
+                                    mb: 5,
+                                    maxWidth: "180px",
+                                    alignItems: "center",
+                                    backgroundColor: "#FFFFFF",
+                                    color: "#07382E",
+                                    borderColor: "#07382E",
+                                    "&:hover": { 
+                                        backgroundColor: "#07382E", 
+                                        color: "#FFFFFF" 
+                                    }
+                                }}
+                                onClick={handleOpenPopup}
+                            >
+                                CRIAR EVENTO
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </form>
 
-                            <BottomNavigationAction 
-                                label="Progresso" 
-                                icon={<SchoolIcon 
-                                    sx={{ 
-                                        fill: 'none', 
-                                        stroke: '#07382E', 
-                                        strokeWidth: 2 
-                                    }} 
-                                />} 
-                                sx={{ 
-                                    color: '#07382E', 
-                                    fontSize: '1.2rem', 
-                                    fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } 
-                                    }} 
-                            />
+                                         {/* POP-UP AQUI!  */}
+                <Popup 
+                    open={openPopup} 
+                    handleClose={handleClosePopup} 
+                />
+                                            {/* MENU PRINCIPAL  */}
+                <BottomNavigation
+                    showLabels 
+                    value={value} 
+                    onChange={(event, newValue) => 
+                    { setValue(newValue); 
+                    }} 
+                    sx={{ 
+                        position: 'fixed', 
+                        bottom: 0, 
+                        left: 0, 
+                        right: 0, 
+                        backgroundColor: '#5DA18F80', 
+                        height: '9%' 
+                    }} 
+                >
 
-                            <BottomNavigationAction 
-                                label="Avaliação" 
-                                icon={<StarIcon 
-                                    sx={{ 
-                                        fill: 'none', 
-                                        stroke: '#07382E', 
-                                        strokeWidth: 2 
-                                        }} 
-                                />} 
-                                sx={{ 
-                                    color: '#07382E', 
-                                    fontSize: '1.2rem', 
-                                    fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } 
-                                    }} 
-                            />
-                        </BottomNavigation>
+                    <BottomNavigationAction
+                        onClick={handleHome} 
+                        label="Home" 
+                        icon={<HomeIcon 
+                        sx={{ 
+                            fill: value === 0 ? '#07382E' : 'none', 
+                            stroke: '#07382E', 
+                            strokeWidth: 2, 
+                            fontSize: '2rem'
+                        }} 
+                            />} 
+                        sx={{ 
+                            color: '#07382E', 
+                            fontSize: '3em', 
+                            fontWeight: 'bold', 
+                            '& .MuiBottomNavigationLabel': { 
+                                gap: '10x' 
+                                } 
+                        }} 
+                    />
 
-                    </Box>
-                    
-                </Paper>
+                    <BottomNavigationAction 
+                        onClick={handleProgresso} 
+                        label="Progresso" 
+                        icon={<SchoolIcon 
+                        sx={{ 
+                            fill: value === 1 ? '#07382E' : 'none', 
+                            stroke: '#07382E', 
+                            strokeWidth: 2, 
+                            fontSize: '2rem' 
+                        }} 
+                            />}
+                        sx={{ 
+                            color: '#07382E', 
+                            fontSize: '2rem', 
+                            fontWeight: 'bold', 
+                            '& .MuiBottomNavigationLabel': { 
+                                gap: '10px' 
+                            } 
+                        }}
+                    />
+
+                    <BottomNavigationAction 
+                        onClick={handleAvaliacao} 
+                        label="Avaliação" 
+                        icon={<StarIcon 
+                        sx={{ 
+                            fill: value === 2 ? '#07382E' : 'none', 
+                            stroke: '#07382E', 
+                            strokeWidth: 2, 
+                            fontSize: '2rem' 
+                        }} 
+                            />} 
+                        sx={{
+                            color: '#07382E', 
+                            fontSize: '2rem', 
+                            fontWeight: 'bold', 
+                            '& .MuiBottomNavigationLabel': { 
+                                gap: '10px' 
+                                } 
+                        }} 
+                    />
+                </BottomNavigation>
+
+            </Paper>
 
         </Container>
 

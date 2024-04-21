@@ -1,7 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Modal, Typography, Button } from '@mui/material';
+import { Modal, Typography } from '@mui/material';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 
 const Tarefa_Criada = ({ open, handleClose }) => {
@@ -18,18 +18,24 @@ const Tarefa_Criada = ({ open, handleClose }) => {
   }, [open, navigate]);
 
     return (
-            <Modal open={open} onClose={handleClose}>
-            <div style={{ 
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              backgroundColor: 'white',
-              padding: '20px',
-              width: '340px',
-              height: '340px',
-              borderRadius: '6px'
-            }}>
+            <Modal 
+              open={open} 
+              onClose={handleClose}
+            >
+
+            <div 
+              style={{ 
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                backgroundColor: 'white',
+                padding: '20px',
+                width: '340px',
+                height: '340px',
+                borderRadius: '6px'
+              }}
+            >
 
               <CheckBoxOutlineBlankIcon 
                 sx={{ 
