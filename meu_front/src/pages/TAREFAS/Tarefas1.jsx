@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Container, CssBaseline, Paper, Typography, Checkbox, Grid, Avatar } from '@mui/material';
+import { Box, Container, CssBaseline, Paper, 
+        Typography, Checkbox, Grid, Avatar } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Fab from '@mui/material/Fab';
@@ -66,10 +67,28 @@ export default function Central_Tarefa() {
         const totalUsuarios = usuariosAtribuidos.length; 
         const usuariosRestantes = totalUsuarios - maxAvatares; 
         for (let i = 0; i < Math.min(maxAvatares, totalUsuarios); i++) {
-            avatares.push(<Avatar key={i} src={usuariosAtribuidos[i].avatar} sx={{ width: 32, height: 32, marginLeft: '-8px' }} />);
+            avatares.push(
+            <Avatar 
+                key={i} 
+                src={usuariosAtribuidos[i].avatar} 
+                sx={{ 
+                    width: 32, 
+                    height: 32, 
+                    marginLeft: '-8px' 
+                }} 
+            />);
         }
         if (usuariosRestantes > 0) {
-            avatares.push(<Avatar key={maxAvatares} src={`/path/to/avatar-placeholder.jpg`} sx={{ width: 32, height: 32, marginLeft: '-8px' }} />);
+            avatares.push(
+            <Avatar 
+                key={maxAvatares} 
+                src={`/path/to/avatar-placeholder.jpg`} 
+                sx={{ 
+                    width: 32, 
+                    height: 32, 
+                    marginLeft: '-8px' 
+                }} 
+            />);
         }
         return avatares;
     };
@@ -82,47 +101,56 @@ export default function Central_Tarefa() {
 
     return (
 
-        <Container component="main" maxWidth="xs">
+        <Container 
+            component="main" 
+            maxWidth="xs"
+        >
 
             <CssBaseline />
 
-                <Paper elevation={2} 
-                    sx={{   mt: 5, p: 2, 
-                            display: 'flex', 
-                            flexDirection: 'column', 
-                            alignItems: 'center', 
-                            boxShadow: "0" 
+                <Paper 
+                elevation={2} 
+                    sx={{   
+                        mt: 5, p: 2, 
+                        display: 'flex', 
+                        flexDirection: 'column', 
+                        alignItems: 'center', 
+                        boxShadow: "0" 
                         }}
                 >
-
+                                    {/* CABEÇALHO  */}
                         <CheckBoxOutlinedIcon 
-                            sx={{   width: 50, 
-                                    height: 100, 
-                                    color:'#07382E' 
+                            sx={{   
+                                width: 50, 
+                                height: 100, 
+                                color:'#07382E' 
                                 }} 
                         />
 
                         <Typography 
                             component="h1" 
                             variant="h9" 
-                            sx={{ color:'#07382E', 
-                                    mt: -3 
+                            sx={{ 
+                                color:'#07382E', 
+                                mt: -3 
                                 }}
                         >
                             Tarefas
                         </Typography>
-
+                                    {/* CARD DE TAREFAS */}
                             <Card 
-                                sx={{   width: '100%', 
-                                        mt: 2, mb:1, mx: 1, 
-                                        boxShadow:'2px 0px 12px 5px rgba(0, 0, 0, 0.2)'
+                                sx={{
+                                    width: '100%', 
+                                    mt: 2, mb:1, mx: 1, 
+                                    boxShadow:'2px 0px 12px 5px rgba(0, 0, 0, 0.2)'
                                     }}
                             >
 
                                 <CardContent 
-                                    sx={{   padding: '4px 10px', 
-                                            display: 'flex', 
-                                            flexDirection: 'column' 
+                                    sx={{   
+                                        padding: '4px 10px', 
+                                        display: 'flex', 
+                                        flexDirection: 'column' 
                                     }}
                                 >
                                     
@@ -131,18 +159,26 @@ export default function Central_Tarefa() {
                                     justifyContent="space-between" 
                                     spacing={1}
                                 >
+
                                     <Grid item>
                                         <Typography 
                                             variant="h6" 
                                             component="h2"
-                                            sx={{ fontSize: '1.2rem' }}
+                                            sx={{ 
+                                                fontSize: '1.2rem' 
+                                            }}
                                         >
                                             NOME DA TAREFA
                                         </Typography>
                                     </Grid>
 
                                     <Grid item >
-                                        <Checkbox disabled sx={{  color: '#07382E'}}/>
+                                        <Checkbox 
+                                            disabled 
+                                            sx={{  
+                                                color: '#07382E'
+                                            }}
+                                        />
                                     </Grid>
                                 </Grid>
                                 
@@ -161,24 +197,30 @@ export default function Central_Tarefa() {
                                 >
                                     <Typography 
                                         variant="body2"
-                                        sx={{ fontSize: '0.70rem' }}
+                                        sx={{ 
+                                            fontSize: '0.70rem' 
+                                        }}
                                     >
                                         Termina em {diasRestantes} dias
                                     </Typography>
                                 </Box>
 
                                 <Box 
-                                    sx={{   display: 'flex', 
-                                            alignItems: 'center', 
-                                            marginTop: '20px', 
-                                            marginBottom: '-10px'
+                                    sx={{   
+                                        display: 'flex', 
+                                        alignItems: 'center', 
+                                        marginTop: '20px', 
+                                        marginBottom: '-10px'
                                     }}
                                 >
-                                    {usuariosAtribuidos.slice(0, maxAvatares).map((usuario, index) => (
+                                    {usuariosAtribuidos.slice(0, maxAvatares)
+                                    .map((usuario, index) => (
                                         <Avatar
                                             key={index}
                                             src={usuario.avatar}
-                                            sx={{ width: 20, height: 20, 
+                                            sx={{ 
+                                                width: 20, 
+                                                height: 20, 
                                                 marginLeft: index !== 0 ? '-8px' : '0' 
                                             }} 
                                         />
@@ -190,7 +232,8 @@ export default function Central_Tarefa() {
                                             marginLeft: '8px' 
                                         }}
                                     >
-                                    {usuariosAtribuidos.map(usuario => usuario.nome).join(', ')} e mais {usuariosAtribuidos.length - maxAvatares} pessoas
+                                    {usuariosAtribuidos.map(usuario => usuario.nome).join(', ')}
+                                    e mais {usuariosAtribuidos.length - maxAvatares} pessoas
                                     </Typography>
 
                                 </Box>
@@ -206,11 +249,12 @@ export default function Central_Tarefa() {
                     >
                         Tarefas Concluídas
                     </Typography>
-                    
+                                        {/* BOTÃO DE CRIAR TAREFA  */}
                     <Box 
-                        sx={{   position: 'fixed', 
-                                mt:90, 
-                                marginLeft: '20%' 
+                        sx={{   
+                            position: 'fixed', 
+                            mt:60, 
+                            marginLeft: '20%' 
                             }}
                     >
                         <Fab
@@ -243,12 +287,13 @@ export default function Central_Tarefa() {
                             onChange={(event, newValue) => {
                             setValue(newValue);
                             }}
-                            sx={{   position: 'fixed', 
-                                    bottom: 0, 
-                                    left: 0, 
-                                    right: 0, 
-                                    backgroundColor: '#5DA18F80', 
-                                    height: '9%'
+                            sx={{   
+                                position: 'fixed', 
+                                bottom: 0, 
+                                left: 0, 
+                                right: 0, 
+                                backgroundColor: '#5DA18F80', 
+                                height: '9%'
                                 }}
                         >
 
@@ -256,15 +301,20 @@ export default function Central_Tarefa() {
                             onClick={handleHome}
                             label="Home" 
                             icon={<HomeIcon 
-                                sx={{   fill: value === 0 ? '#07382E' : 'none', 
-                                        stroke: '#07382E', 
-                                        strokeWidth: 2, 
-                                        fontSize: '2rem' 
+                                sx={{   
+                                    fill: value === 0 ? '#07382E' : 'none', 
+                                    stroke: '#07382E', 
+                                    strokeWidth: 2, 
+                                    fontSize: '2rem' 
                                     }} 
                                 />}
-                                sx={{ color:  '#07382E', 
+                                sx={{ 
+                                    color:  '#07382E', 
                                     fontSize: '3em', 
-                                    fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10x' } 
+                                    fontWeight: 'bold',
+                                    '& .MuiBottomNavigationLabel': {
+                                        gap: '10x'
+                                    } 
                                 }}
                         />
 
@@ -272,15 +322,20 @@ export default function Central_Tarefa() {
                             onClick={handleProgresso}
                             label="Progresso" 
                             icon={<SchoolIcon 
-                                sx={{   fill: value === 1 ? '#07382E' : 'none', 
-                                        stroke: '#07382E', 
-                                        strokeWidth: 2, 
-                                        fontSize: '2rem' 
+                                sx={{   
+                                    fill: value === 1 ? '#07382E' : 'none', 
+                                    stroke: '#07382E', 
+                                    strokeWidth: 2, 
+                                    fontSize: '2rem' 
                                     }} 
                                 />}
-                                sx={{   color: '#07382E', 
-                                        fontSize: '2rem', 
-                                        fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } 
+                                sx={{   
+                                    color: '#07382E', 
+                                    fontSize: '2rem', 
+                                    fontWeight: 'bold',
+                                    '& .MuiBottomNavigationLabel': {
+                                        gap: '10px' 
+                                    } 
                                     }}
                         />
 
@@ -288,15 +343,20 @@ export default function Central_Tarefa() {
                             onClick={handleAvaliacao}
                             label="Avaliação" 
                             icon={<StarIcon 
-                                sx={{   fill: value === 2 ? '#07382E' : 'none', 
-                                        stroke: '#07382E', 
-                                        strokeWidth: 2, 
-                                        fontSize: '2rem'  
+                                sx={{   
+                                    fill: value === 2 ? '#07382E' : 'none', 
+                                    stroke: '#07382E', 
+                                    strokeWidth: 2, 
+                                    fontSize: '2rem'  
                                     }} 
                                 />}
-                                sx={{   color: '#07382E', 
-                                        fontSize: '2rem', 
-                                        fontWeight: 'bold', '& .MuiBottomNavigationLabel': { gap: '10px' } 
+                                sx={{   
+                                    color: '#07382E', 
+                                    fontSize: '2rem', 
+                                    fontWeight: 'bold',
+                                    '& .MuiBottomNavigationLabel': { 
+                                        gap: '10px'
+                                    } 
                                     }}
                         />
 

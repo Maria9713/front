@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Modal, Typography, Button } from '@mui/material';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 
-const Popup = ({ open, handleClose }) => {
+const Tarefa_Criada = ({ open, handleClose }) => {
 
   const navigate = useNavigate();
 
@@ -30,11 +30,30 @@ const Popup = ({ open, handleClose }) => {
               height: '340px',
               borderRadius: '6px'
             }}>
-               <CheckBoxOutlineBlankIcon sx={{ width: 300, height: 170, color: '#07382E' }} />
-              <Typography variant="h5"sx={{ textAlign:'center', fontSize:'1.5rem',fontWeight: 'bold'}}>Tarefa Criada Com Sucesso!  </Typography>
+
+              <CheckBoxOutlineBlankIcon 
+                sx={{ 
+                  width: 300, 
+                  height: 170, 
+                  color: '#07382E' 
+                  }} 
+              />
+
+              <Typography 
+                variant="h5"
+                sx={{ 
+                  textAlign:'center', 
+                  fontSize:'1.5rem',
+                  fontWeight: 'bold'
+                  }}
+              >
+                  Tarefa Criada Com Sucesso!  
+              </Typography>
+
             </div>
+
           </Modal>
     );
 };
 
-export default Popup;
+export default Tarefa_Criada;

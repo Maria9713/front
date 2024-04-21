@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box,Button, Container, CssBaseline, Paper, Typography, IconButton, Grid, List, ListItemButton, ListItemIcon, ListItemText, Collapse, Avatar } from '@mui/material';
+import { Box,Button, Container, CssBaseline, Paper, 
+        Typography, IconButton, Grid, List, ListItemButton, 
+        ListItemIcon, ListItemText, Collapse, Avatar } from '@mui/material';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 
@@ -17,7 +19,7 @@ import SchoolIcon from '@mui/icons-material/School';
 import StarIcon from '@mui/icons-material/Star'; 
 
 
-export default function Configuracoes() {
+export default function Tarefa_Concluida() {
 
     const navigate = useNavigate();
     const handleBack = () => {
@@ -51,16 +53,29 @@ export default function Configuracoes() {
         component="nav" 
         aria-labelledby="task-list-header"
       >
-        <ListItemButton sx={{ pr: -1 }}>
-          <ListItemIcon sx={{ mr: -3 }}>
-            <HowToRegOutlinedIcon sx={{ color: '#07382E' }} />
+        <ListItemButton 
+          sx={{ pr: -1 }}
+        >
+          <ListItemIcon 
+            sx={{ mr: -3 }}
+          >
+            <HowToRegOutlinedIcon 
+              sx={{ color: '#07382E' }}
+            />
           </ListItemIcon>
 
           <ListItemText 
             primary={
-              <span style={{ fontWeight: 'bold' }}>Concluído por:</span>
+              <span 
+                style={{ fontWeight: 'bold' }}
+              >
+                Concluído por:
+              </span>
             }
-            primaryTypographyProps={{ variant: 'body2', fontSize: '0.8rem' }}
+            primaryTypographyProps={{ 
+              variant: 'body2', 
+              fontSize: '0.8rem' 
+            }}
           />
         </ListItemButton>
 
@@ -68,7 +83,12 @@ export default function Configuracoes() {
           <Avatar 
             alt={completedBy} 
             src={`https://source.unsplash.com/32x32/?${completedBy}`} 
-            sx={{ width: 24, height: 24, mr: 2, ml: 3 }} 
+            sx={{ 
+              width: 24, 
+              height: 24, 
+              mr: 2, 
+              ml: 3 
+            }} 
           />
 
           <ListItemText 
@@ -76,13 +96,31 @@ export default function Configuracoes() {
               <>
                 <span>{completedBy}</span>
                 {completionDate ? (
-                  <span style={{ marginLeft: '6rem' }}>em: {completionDate}</span>
+                  <span 
+                    style={{ marginLeft: '6rem' }}
+                  >
+                    em: 
+                    {completionDate}
+                  </span>
                 ) : (
-                  <span style={{ color: 'red', fontWeight: 'bold', marginLeft: '6rem' }}> NÃO CONCLUÍDA</span>
+                  <span 
+                    style={{ 
+                      color: 'red', 
+                      fontWeight: 'bold', 
+                      marginLeft: '6rem' 
+                    }}
+                  > 
+                    NÃO CONCLUÍDA
+                  </span>
                 )}
               </>
             }
-            primaryTypographyProps={{ variant: 'body2', fontSize: '0.8rem', display: 'flex', alignItems: 'center' }}
+            primaryTypographyProps={{ 
+              variant: 'body2', 
+              fontSize: '0.8rem', 
+              display: 'flex', 
+              alignItems: 'center' 
+            }}
             sx={{ marginLeft: '0.5rem' }} 
           />
         </ListItemButton>
@@ -91,22 +129,47 @@ export default function Configuracoes() {
           <Avatar 
             alt={assignedTo} 
             src={`https://source.unsplash.com/32x32/?${assignedTo}`} 
-            sx={{ width: 24, height: 24, mr: 2, ml: 3 }} 
+            sx={{ 
+              width: 24, 
+              height: 24, 
+              mr: 2, 
+              ml: 3 
+            }} 
           />
           <ListItemText 
             primary={
               <>
                 <span>{assignedTo}</span>
-                <span style={{ color: 'red', fontWeight: 'bold', marginLeft: '6rem' }}> NÃO CONCLUÍDA</span>
+                <span 
+                  style={{ 
+                    color: 'red', 
+                    fontWeight: 'bold', 
+                    marginLeft: '6rem' 
+                    }}
+                > 
+                  NÃO CONCLUÍDA
+                </span>
               </>
             }
-            primaryTypographyProps={{ variant: 'body2', fontSize: '0.8rem', display: 'flex', alignItems: 'center' }}
+            primaryTypographyProps={{
+              variant: 'body2', 
+              fontSize: '0.8rem', 
+              display: 'flex', 
+              alignItems: 'center' 
+            }}
             sx={{ marginLeft: '0.5rem' }} 
           />
         </ListItemButton>
 
-        <Collapse in={true} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
+        <Collapse 
+          in={true} 
+          timeout="auto" 
+          unmountOnExit
+        >
+          <List 
+            component="div" 
+            disablePadding
+          >
             {/* Aqui você pode adicionar mais detalhes da tarefa, se necessário */}
           </List>
         </Collapse>
@@ -116,50 +179,72 @@ export default function Configuracoes() {
   
   
     return (
-      <Container component="main" maxWidth="xs">
+      <Container 
+        component="main" 
+        maxWidth="xs"
+      >
         <CssBaseline />
         <Paper 
           elevation={2} 
-          sx={{ mt: 5, p: 2, 
-                display: 'flex', 
-                flexDirection: 'column', 
-                alignItems: 'center', 
-                boxShadow: "0" 
+          sx={{ 
+            mt: 5, p: 2, 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            boxShadow: "0" 
           }}
         >
                                     {/* CABEÇALHO  */}
-          <IconButton onClick={handleBack} sx={{ alignSelf: 'flex-start' }}>
+          <IconButton
+          onClick={handleBack} 
+          sx={{ alignSelf: 'flex-start' }}
+          >
             <ArrowBackIcon sx={{ fontSize: 35 }} />
           </IconButton>
 
           <CheckBoxOutlinedIcon 
-            sx={{ width: 70, 
-                  height: 100, 
-                  color:'#07382E' 
+            sx={{ 
+              width: 70, 
+              height: 100, 
+              color:'#07382E' 
             }}
           />
 
           <Typography 
             component="h1" 
             variant="h9" 
-            sx={{ color:'#07382E', mt: -1 }}
+            sx={{ 
+              color:'#07382E', 
+              mt: -1 
+            }}
           >
             Nome da Tarefa
           </Typography>
 
                                     {/* CAMPO DE LEITURA DATA  */}
           <Box 
-            sx={{ boxShadow:'2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
-                  width:'100%', height: '100%', borderRadius: '5px', 
-                  marginTop: '5%', display: 'flex', justifyContent: 'center', 
-                  alignItems: 'center', padding: '-10px' 
+            sx={{ 
+              boxShadow:'2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
+              width:'100%', 
+              height: '100%', 
+              borderRadius: '5px', 
+              marginTop: '5%', 
+              display: 'flex', 
+              justifyContent: 'center', 
+              alignItems: 'center', 
+              padding: '-10px' 
             }}
           >
             <Grid container alignItems="center" spacing={1}>
 
               <Grid item>
                 <IconButton disabled>
-                  <CalendarMonthIcon sx={{color:'#07382E', marginLeft: '60%'}} />
+                  <CalendarMonthIcon 
+                    sx={{
+                      color:'#07382E', 
+                      marginLeft: '60%'
+                      }} 
+                  />
                 </IconButton>
               </Grid>
 
@@ -167,9 +252,10 @@ export default function Configuracoes() {
                 <Typography 
                   variant="subtitle1" 
                   gutterBottom 
-                  sx={{ marginTop: '5%', 
-                        textAlign: 'center', 
-                        fontWeight: 'bold'
+                  sx={{ 
+                    marginTop: '5%', 
+                    textAlign: 'center', 
+                    fontWeight: 'bold'
                   }}
                 >
                   Data de Conclusão:
@@ -180,9 +266,10 @@ export default function Configuracoes() {
                 <Typography 
                   variant="body1" 
                   paragraph 
-                  sx={{ textAlign: 'center', 
-                        marginTop: '20%', 
-                        marginLeft: '10%'
+                  sx={{ 
+                    textAlign: 'center', 
+                    marginTop: '20%', 
+                    marginLeft: '10%'
                   }}
                 >
                   {/* {task.dueDate} */} 
@@ -194,10 +281,16 @@ export default function Configuracoes() {
 
                                     {/* CAMPO DE LEITURA ATRIBUIDOS  */}
           <Box 
-            sx={{ boxShadow:'2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
-                  width:'100%', height: '100%', borderRadius: '5px', 
-                  marginTop: '5%', display: 'flex', justifyContent: 'center', 
-                  alignItems: 'center', padding: '-10px' 
+            sx={{ 
+              boxShadow:'2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
+              width:'100%', 
+              height: '100%', 
+              borderRadius: '5px', 
+              marginTop: '5%', 
+              display: 'flex', 
+              justifyContent: 'center', 
+              alignItems: 'center', 
+              padding: '-10px' 
             }}
           >
             <TaskList />
@@ -207,8 +300,12 @@ export default function Configuracoes() {
           <Box
             sx={{
               boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)',
-              width: '100%', height: '100%',borderRadius: '5px',
-              marginTop: '5%',display: 'flex',flexDirection: 'column', 
+              width: '100%', 
+              height: '100%',
+              borderRadius: '5px',
+              marginTop: '5%',
+              display: 'flex',
+              flexDirection: 'column', 
               alignItems: 'flex-start', 
             }}
           >
@@ -216,7 +313,9 @@ export default function Configuracoes() {
 
               <Grid item>
                 <IconButton disabled>
-                  <EditNoteOutlinedIcon sx={{ color: '#07382E' }} />
+                  <EditNoteOutlinedIcon 
+                  sx={{ color: '#07382E' }} 
+                  />
                 </IconButton>
               </Grid>
 
@@ -234,9 +333,10 @@ export default function Configuracoes() {
             <Typography 
               variant="body1" 
               paragraph 
-              sx={{ textAlign: 'left', 
-                    marginTop: '2px', 
-                    marginLeft: '3%' 
+              sx={{ 
+                textAlign: 'left', 
+                marginTop: '2px', 
+                marginLeft: '3%' 
               }}
             > 
               {descricao}
@@ -253,12 +353,13 @@ export default function Configuracoes() {
               onChange={(event, newValue) => {
               setValue(newValue);
               }}
-              sx={{   position: 'fixed', 
-                      bottom: 0, 
-                      left: 0, 
-                      right: 0, 
-                      backgroundColor: '#5DA18F80', 
-                      height: '9%'
+              sx={{   
+                position: 'fixed', 
+                bottom: 0, 
+                left: 0, 
+                right: 0, 
+                backgroundColor: '#5DA18F80', 
+                height: '9%'
               }}
             >
 
@@ -266,16 +367,20 @@ export default function Configuracoes() {
               onClick={handleHome}
               label="Home" 
               icon={<HomeIcon 
-                sx={{ fill: value === 0 ? '#07382E' : 'none', 
-                      stroke: '#07382E', 
-                      strokeWidth: 2, 
-                      fontSize: '2rem' 
+                sx={{ 
+                  fill: value === 0 ? '#07382E' : 'none', 
+                  stroke: '#07382E', 
+                  strokeWidth: 2, 
+                  fontSize: '2rem' 
                 }} 
               />}
-                sx={{ color:  '#07382E', 
-                      fontSize: '3em', 
-                      fontWeight: 'bold', 
-                      '& .MuiBottomNavigationLabel': { gap: '10x' } 
+                sx={{
+                  color:  '#07382E', 
+                  fontSize: '3em', 
+                  fontWeight: 'bold', 
+                  '& .MuiBottomNavigationLabel': { 
+                    gap: '10x' 
+                  } 
               }}
             />
 
@@ -283,15 +388,19 @@ export default function Configuracoes() {
               onClick={handleProgresso}
               label="Progresso" 
               icon={<SchoolIcon 
-                      sx={{ fill: value === 1 ? '#07382E' : 'none', 
-                          stroke: '#07382E', 
-                          strokeWidth: 2, 
-                          fontSize: '2rem' }} 
+                      sx={{ 
+                        fill: value === 1 ? '#07382E' : 'none', 
+                        stroke: '#07382E', 
+                        strokeWidth: 2, 
+                        fontSize: '2rem' }} 
                   />}
-                      sx={{ color: '#07382E', 
-                          fontSize: '2rem', 
-                          fontWeight: 'bold', 
-                          '& .MuiBottomNavigationLabel': { gap: '10px' } 
+                      sx={{ 
+                        color: '#07382E', 
+                        fontSize: '2rem', 
+                        fontWeight: 'bold', 
+                        '& .MuiBottomNavigationLabel': { 
+                          gap: '10px' 
+                        } 
                       }}
             />
 
@@ -299,15 +408,20 @@ export default function Configuracoes() {
               onClick={handleAvaliacao}
               label="Avaliação" 
               icon={<StarIcon 
-                      sx={{ fill: value === 2 ? '#07382E' : 'none', 
-                          stroke: '#07382E', 
-                          strokeWidth: 2, 
-                          fontSize: '2rem'  }} 
+                      sx={{ 
+                        fill: value === 2 ? '#07382E' : 'none', 
+                        stroke: '#07382E', 
+                        strokeWidth: 2, 
+                        fontSize: '2rem'  
+                      }} 
                   />}
-                      sx={{ color: '#07382E', 
-                          fontSize: '2rem', 
-                          fontWeight: 'bold', 
-                          '& .MuiBottomNavigationLabel': { gap: '10px' } 
+                      sx={{ 
+                        color: '#07382E', 
+                        fontSize: '2rem', 
+                        fontWeight: 'bold', 
+                        '& .MuiBottomNavigationLabel': { 
+                          gap: '10px' 
+                        } 
                       }}
             />
 

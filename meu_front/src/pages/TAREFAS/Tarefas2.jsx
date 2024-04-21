@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box,Button, Container, CssBaseline, Paper, Typography, IconButton, Grid, List, ListItemButton, ListItemIcon, ListItemText, Collapse, Avatar } from '@mui/material';
+import { Box,Button, Container, CssBaseline, Paper, 
+        Typography, IconButton, Grid, List, ListItemButton, 
+        ListItemIcon, ListItemText, Collapse, Avatar } from '@mui/material';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 
@@ -21,7 +23,7 @@ import StarIcon from '@mui/icons-material/Star';
 // IMPORT POP-UP 
 import Popup from './Pop_Up_2';
 
-export default function Configuracoes() {
+export default function Detalhes_Tarefa() {
 
   // POP-UP 
   const [openPopup, setOpenPopup] = useState(false);
@@ -73,7 +75,8 @@ const handleAvaliacao= () => {
           } else if (assignedUsers.length <= 3) {
             return assignedUsers.join(", ");
           } else {
-            return `${assignedUsers[0]} e +${assignedUsers.length - 1} pessoas`;
+            return `${assignedUsers[0]} 
+            e +${assignedUsers.length - 1} pessoas`;
           }
         };
 
@@ -82,19 +85,21 @@ const handleAvaliacao= () => {
             return null;
           } else if (assignedUsers.length === 1) {
             return (
-              <Avatar alt={assignedUsers[0]} 
-                      src={`https://source.unsplash.com/32x32/?${assignedUsers[0]}`} 
-                      sx={{ width: 24, height: 24, marginLeft: 10}} 
+              <Avatar 
+                alt={assignedUsers[0]} 
+                src={`https://source.unsplash.com/32x32/?${assignedUsers[0]}`} 
+                sx={{ width: 24, height: 24, marginLeft: 10}} 
               />
             );
           } else {
             return (
               <>
                 {assignedUsers.slice(0, 3).map((user, index) => (
-                  <Avatar key={index} 
-                          alt={user} 
-                          src={`https://source.unsplash.com/32x32/?${user}`} 
-                          sx={{ width: 24, height: 24, ml: -1}} 
+                  <Avatar 
+                    key={index} 
+                    alt={user} 
+                    src={`https://source.unsplash.com/32x32/?${user}`} 
+                    sx={{ width: 24, height: 24, ml: -1}} 
                   />
                 ))}
               </>
@@ -108,33 +113,60 @@ const handleAvaliacao= () => {
             component="nav"
             aria-labelledby="task-list-header"
           >
-            <ListItemButton onClick={handleClick} sx={{ pr: -1 }}> 
-              <ListItemIcon sx={{ mr: -3 }}> 
-                <GroupOutlinedIcon sx={{ color: '#07382E' }} />
+            <ListItemButton 
+              onClick={handleClick} 
+              sx={{ pr: -1 }}
+            > 
+              <ListItemIcon 
+                sx={{ mr: -3 }}
+              > 
+                <GroupOutlinedIcon 
+                  x={{ color: '#07382E' }} 
+                />
               </ListItemIcon>
               {open ? (
-                <ListItemText primary="Pessoas Atribuídas" />
+                <ListItemText 
+                  primary="Pessoas Atribuídas" 
+                />
               ) : (
                 <>
                   <ListItemText 
                     primary="Atribuído:" 
-                    primaryTypographyProps={{ fontWeight: 'bold' }}
+                    primaryTypographyProps={{ 
+                      fontWeight: 'bold' 
+                    }}
                   />
                   {renderAvatars()}
                   <ListItemText 
-                      primary={`${assignedUsers[0]} e +${assignedUsers.length - 1} pessoas`} 
-                      primaryTypographyProps={{ variant: 'body2', fontSize: '0.8rem' }} 
-                      sx={{ marginLeft: 2 }} />
+                      primary={`${assignedUsers[0]} 
+                      e +${assignedUsers.length - 1} pessoas`} 
+                      primaryTypographyProps={{ 
+                        variant: 'body2', 
+                        fontSize: '0.8rem' 
+                      }} 
+                      sx={{ marginLeft: 2 }} 
+                  />
                 </>
               )}
               {open ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
 
-            <Collapse in={open} timeout="auto" unmountOnExit>
-              <List component="div" disablePadding>
+            <Collapse 
+              in={open} 
+              timeout="auto" 
+              unmountOnExit
+            >
+              <List component="div" 
+              disablePadding>
                 {assignedUsers.map((user, index) => (
-                  <ListItemButton key={index} sx={{ pl: 4 }}>
-                    <Avatar alt={user} src={`https://source.unsplash.com/32x32/?${user}`} />
+                  <ListItemButton 
+                    key={index} 
+                    sx={{ pl: 4 }}
+                  >
+                    <Avatar 
+                      alt={user} 
+                      src={`https://source.unsplash.com/32x32/?${user}`} 
+                    />
                     <ListItemText primary={user} />
                   </ListItemButton>
                 ))}
@@ -145,38 +177,74 @@ const handleAvaliacao= () => {
     };
 
     return (
-      <Container component="main" maxWidth="xs">
+      <Container 
+        component="main" 
+        maxWidth="xs"
+      >
         <CssBaseline />
         <Paper 
           elevation={2} 
-          sx={{ mt: 5, p: 2, display: 'flex', 
-                flexDirection: 'column', 
-                alignItems: 'center', 
-                boxShadow: "0" 
+          sx={{ 
+            mt: 5, 
+            p: 2, 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            boxShadow: "0" 
           }}
         >
                                     {/* CABEÇALHO  */}
-          <IconButton onClick={handleBack} sx={{ alignSelf: 'flex-start' }}>
+          <IconButton 
+            onClick={handleBack} 
+            sx={{ alignSelf: 'flex-start' }}
+          >
             <ArrowBackIcon sx={{ fontSize: 35 }} />
           </IconButton>
-          <CheckBoxOutlineBlankIcon sx={{ width: 50, height: 100, color:'#07382E' }} />
-          <Typography component="h1" variant="h9" sx={{ color:'#07382E', mt: -1 }}>
+          <CheckBoxOutlineBlankIcon 
+          sx={{ 
+            width: 50, 
+            height: 100, 
+            color:'#07382E' 
+            }} 
+            />
+          <Typography 
+            component="h1" 
+            variant="h9" 
+            sx={{ 
+              color:'#07382E',
+              mt: -1 
+              }}
+          >
             Nome da Tarefa
           </Typography>
 
                                     {/* CAMPO DE LEITURA DATA  */}
           <Box 
-            sx={{ boxShadow:'2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
-              width:'100%', height: '100%', borderRadius: '5px', 
-              marginTop: '5%', display: 'flex', justifyContent: 'center', 
-              alignItems: 'center', padding: '-10px' 
+            sx={{ 
+              boxShadow:'2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
+              width:'100%', 
+              height: '100%', 
+              borderRadius: '5px', 
+              marginTop: '5%', 
+              display: 'flex', 
+              justifyContent: 'center', 
+              alignItems: 'center', 
+              padding: '-10px' 
             }}
           >
-            <Grid container alignItems="center" spacing={1}>
+            <Grid 
+            container alignItems="center" 
+            spacing={1}
+            >
 
               <Grid item>
                 <IconButton disabled>
-                  <CalendarMonthIcon sx={{color:'#07382E', marginLeft: '60%'}} />
+                  <CalendarMonthIcon 
+                    sx={{
+                      color:'#07382E', 
+                      marginLeft: '60%'
+                      }} 
+                    />
                 </IconButton>
               </Grid>
 
@@ -184,9 +252,10 @@ const handleAvaliacao= () => {
                 <Typography 
                   variant="subtitle1" 
                   gutterBottom
-                  sx={{ marginTop: '5%', 
-                        textAlign: 'center', 
-                        fontWeight: 'bold'
+                  sx={{ 
+                    marginTop: '5%', 
+                    textAlign: 'center', 
+                    fontWeight: 'bold'
                   }}
                 >
                   Data de Conclusão:
@@ -197,9 +266,10 @@ const handleAvaliacao= () => {
                 <Typography 
                   variant="body1" 
                   paragraph 
-                  sx={{ textAlign: 'center', 
-                        marginTop: '20%', 
-                        marginLeft: '10%'
+                  sx={{ 
+                    textAlign: 'center', 
+                    marginTop: '20%', 
+                    marginLeft: '10%'
                   }}
                   >
                   {/* {task.dueDate} */} 
@@ -211,11 +281,17 @@ const handleAvaliacao= () => {
 
                                     {/* CAMPO DE LEITURA ATRIBUIDOS  */}
           <Box 
-            sx={{ boxShadow:'2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
-                  width:'100%', height: '100%', borderRadius: '5px', 
-                  marginTop: '5%', display: 'flex', justifyContent: 'center', 
-                  alignItems: 'center', padding: '-10px' 
-                }}
+            sx={{ 
+              boxShadow:'2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
+              width:'100%', 
+              height: '100%', 
+              borderRadius: '5px', 
+              marginTop: '5%', 
+              display: 'flex', 
+              justifyContent: 'center', 
+              alignItems: 'center', 
+              padding: '-10px' 
+            }}
           >
             <TaskList />
           </Box>
@@ -224,16 +300,27 @@ const handleAvaliacao= () => {
           <Box
             sx={{
               boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)',
-              width: '100%',height: '100%',borderRadius: '5px',
-              marginTop: '5%',display: 'flex',flexDirection: 'column', 
-              alignItems: 'flex-start', padding: '10px'
+              width: '100%',
+              height: '100%',
+              borderRadius: '5px',
+              marginTop: '5%',
+              display: 'flex',
+              flexDirection: 'column', 
+              alignItems: 'flex-start', 
+              padding: '10px'
             }}
           >
-            <Grid container alignItems="center" spacing={1}>
+            <Grid 
+              container 
+              alignItems="center" 
+              spacing={1}
+            >
 
               <Grid item>
                 <IconButton disabled>
-                  <EditNoteOutlinedIcon sx={{ color: '#07382E' }} /> 
+                  <EditNoteOutlinedIcon 
+                    sx={{ color: '#07382E' }} 
+                  /> 
                 </IconButton>
               </Grid>
 
@@ -251,9 +338,10 @@ const handleAvaliacao= () => {
             <Typography 
               variant="body1" 
               paragraph 
-              sx={{ textAlign: 'left', 
-              marginTop: '2px', 
-              marginLeft: '3%' 
+              sx={{ 
+                textAlign: 'left', 
+                marginTop: '2px', 
+                marginLeft: '3%' 
               }}
               > 
               {descricao}
@@ -261,7 +349,11 @@ const handleAvaliacao= () => {
           </Box>
 
                                     {/* BOTÕES EDITAR E EXCLUIR  */}
-          <Grid container spacing={2} sx={{marginTop: '6%'}}>
+          <Grid 
+            container 
+            spacing={2} 
+            sx={{marginTop: '6%'}}
+          >
 
             <Grid item xs={6}>
               <Button
@@ -276,7 +368,10 @@ const handleAvaliacao= () => {
                   backgroundColor: "#FFFFFF",
                   color: "#07382E",
                   borderColor: "#07382E",
-                  "&:hover": { backgroundColor: "#07382E", color: "#FFFFFF" }
+                  "&:hover": { 
+                    backgroundColor: "#07382E", 
+                    color: "#FFFFFF" 
+                  }
                 }}
               >
                 EDITAR
@@ -285,6 +380,7 @@ const handleAvaliacao= () => {
 
             <Grid item xs={6}>
               <Button
+                onClick={handleOpenPopup}
                 type="submit"
                 fullWidth
                 variant="outlined"
@@ -301,7 +397,6 @@ const handleAvaliacao= () => {
                     borderBlockColor: 'transparent'
                   }
                 }}
-                onClick={handleOpenPopup} 
               >
                   EXCLUIR
               </Button>
@@ -309,9 +404,12 @@ const handleAvaliacao= () => {
 
           </Grid>
                                     {/* ABERTURA DE POP-UP  */}
-          <Popup open={openPopup} handleClose={handleClosePopup} />
+          <Popup 
+            open={openPopup} 
+            handleClose={handleClosePopup} 
+          />
 
-                    {/* MENU PRINCIPAL   */}
+                                    {/* MENU PRINCIPAL   */}
           <Box elevation={3} >
 
             <BottomNavigation
@@ -320,12 +418,13 @@ const handleAvaliacao= () => {
               onChange={(event, newValue) => {
               setValue(newValue);
               }}
-              sx={{   position: 'fixed', 
-                      bottom: 0, 
-                      left: 0, 
-                      right: 0, 
-                      backgroundColor: '#5DA18F80', 
-                      height: '9%'
+              sx={{   
+                position: 'fixed', 
+                bottom: 0, 
+                left: 0, 
+                right: 0, 
+                backgroundColor: '#5DA18F80', 
+                height: '9%'
               }}
             >
 
@@ -333,16 +432,20 @@ const handleAvaliacao= () => {
               onClick={handleHome}
               label="Home" 
               icon={<HomeIcon 
-                sx={{ fill: value === 0 ? '#07382E' : 'none', 
-                      stroke: '#07382E', 
-                      strokeWidth: 2, 
-                      fontSize: '2rem' 
+                sx={{ 
+                  fill: value === 0 ? '#07382E' : 'none', 
+                  stroke: '#07382E', 
+                  strokeWidth: 2, 
+                  fontSize: '2rem' 
                 }} 
               />}
-                sx={{ color:  '#07382E', 
-                      fontSize: '3em', 
-                      fontWeight: 'bold', 
-                      '& .MuiBottomNavigationLabel': { gap: '10x' } 
+                sx={{ 
+                  color:  '#07382E', 
+                  fontSize: '3em', 
+                  fontWeight: 'bold', 
+                  '& .MuiBottomNavigationLabel': { 
+                    gap: '10x' 
+                  } 
               }}
             />
 
@@ -350,15 +453,19 @@ const handleAvaliacao= () => {
               onClick={handleProgresso}
               label="Progresso" 
               icon={<SchoolIcon 
-                      sx={{ fill: value === 1 ? '#07382E' : 'none', 
-                          stroke: '#07382E', 
-                          strokeWidth: 2, 
-                          fontSize: '2rem' }} 
+                      sx={{ 
+                        fill: value === 1 ? '#07382E' : 'none', 
+                        stroke: '#07382E', 
+                        strokeWidth: 2, 
+                        fontSize: '2rem' }} 
                   />}
-                      sx={{ color: '#07382E', 
-                          fontSize: '2rem', 
-                          fontWeight: 'bold', 
-                          '& .MuiBottomNavigationLabel': { gap: '10px' } 
+                      sx={{ 
+                        color: '#07382E', 
+                        fontSize: '2rem', 
+                        fontWeight: 'bold', 
+                        '& .MuiBottomNavigationLabel': { 
+                          gap: '10px' 
+                        } 
                       }}
             />
 
@@ -366,15 +473,19 @@ const handleAvaliacao= () => {
               onClick={handleAvaliacao}
               label="Avaliação" 
               icon={<StarIcon 
-                      sx={{ fill: value === 2 ? '#07382E' : 'none', 
-                          stroke: '#07382E', 
-                          strokeWidth: 2, 
-                          fontSize: '2rem'  }} 
+                      sx={{ 
+                        fill: value === 2 ? '#07382E' : 'none', 
+                        stroke: '#07382E', 
+                        strokeWidth: 2, 
+                        fontSize: '2rem'  }} 
                   />}
-                      sx={{ color: '#07382E', 
-                          fontSize: '2rem', 
-                          fontWeight: 'bold', 
-                          '& .MuiBottomNavigationLabel': { gap: '10px' } 
+                      sx={{ 
+                        color: '#07382E', 
+                        fontSize: '2rem', 
+                        fontWeight: 'bold', 
+                        '& .MuiBottomNavigationLabel': { 
+                          gap: '10px'
+                        } 
                       }}
             />
 

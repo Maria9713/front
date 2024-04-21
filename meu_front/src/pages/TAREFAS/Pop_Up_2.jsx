@@ -3,7 +3,7 @@ import { Modal, Typography, Button, Grid } from '@mui/material';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import PopUp3 from './Pop_Up_3';
 
-const PopUp2 = ({ open, handleClose }) => {
+const Excluir_Tarefa = ({ open, handleClose }) => {
   const [openPopup, setOpenPopup] = useState(false);
 
   const handleOpenPopup = () => {
@@ -15,7 +15,12 @@ const PopUp2 = ({ open, handleClose }) => {
   };
 
   return (
-    <Modal open={open} onClose={handleClose}>
+
+    <Modal 
+      open={open} 
+      onClose={handleClose}
+    >
+
       <div
         style={{
           position: 'absolute',
@@ -30,8 +35,13 @@ const PopUp2 = ({ open, handleClose }) => {
         }}
       >
         <DeleteForeverOutlinedIcon
-          sx={{ width: 300, height: 120, color: '#07382E' }}
+          sx={{ 
+            width: 300, 
+            height: 120, 
+            color: '#07382E' 
+          }}
         />
+
         <Typography
           variant="h5"
           sx={{
@@ -42,13 +52,23 @@ const PopUp2 = ({ open, handleClose }) => {
         >
           Excluir Tarefa?
         </Typography>
+
         <Typography
           variant="body2"
-          sx={{ marginTop: '5%', textAlign: 'center', fontSize: '1rem' }}
+          sx={{ 
+            marginTop: '5%', 
+            textAlign: 'center', 
+            fontSize: '1rem' 
+          }}
         >
           Certeza que deseja excluir esta tarefa?
         </Typography>
-        <Grid container spacing={2} sx={{ marginTop: '6%' }}>
+
+        <Grid 
+        container 
+        spacing={2} 
+        sx={{ marginTop: '6%' }}
+        >
           <Grid item xs={6}>
             <Button
               onClick={handleClose}
@@ -95,11 +115,18 @@ const PopUp2 = ({ open, handleClose }) => {
               EXCLUIR
             </Button>
           </Grid>
+
         </Grid>
-        <PopUp3 open={openPopup} handleClose={handleClosePopup2} />
+
+        <PopUp3 
+        open={openPopup} 
+        handleClose={handleClosePopup2} 
+        />
+
       </div>
+
     </Modal>
   );
 };
 
-export default PopUp2;
+export default Excluir_Tarefa;

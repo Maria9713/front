@@ -3,7 +3,7 @@ import { Modal, Typography, Button } from '@mui/material';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import { useNavigate } from 'react-router-dom';
 
-const PopUp3 = ({ open, handleClose }) => {
+const Tarefa_Excluida = ({ open, handleClose }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,7 +16,11 @@ const PopUp3 = ({ open, handleClose }) => {
   }, [open, navigate]);
 
   return (
-    <Modal open={open} onClose={handleClose} onClick={handleClose}>
+    <Modal 
+      open={open} 
+      onClose={handleClose} 
+      onClick={handleClose}
+    >
       <div
         style={{
           position: 'absolute',
@@ -30,9 +34,15 @@ const PopUp3 = ({ open, handleClose }) => {
           borderRadius: '6px',
         }}
       >
+
         <DeleteForeverOutlinedIcon
-          sx={{ width: 300, height: 170, color: '#07382E' }}
+          sx={{ 
+            width: 300, 
+            height: 170, 
+            color: '#07382E' 
+          }}
         />
+
         <Typography
           variant="h5"
           sx={{
@@ -43,15 +53,24 @@ const PopUp3 = ({ open, handleClose }) => {
         >
           Tarefa Excluída
         </Typography>
+        
         <Typography
           variant="body2"
-          sx={{ marginTop: '5%', textAlign: 'center', fontSize: '1rem' }}
+          sx={{ 
+            marginTop: '5%', 
+            textAlign: 'center', 
+            fontSize: '1rem' 
+          }}
         >
           A tarefa foi excluída com sucesso!
         </Typography>
+
       </div>
+
     </Modal>
+
   );
+  
 };
 
-export default PopUp3;
+export default Tarefa_Excluida;

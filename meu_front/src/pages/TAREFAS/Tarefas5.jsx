@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Button, Container, CssBaseline, Paper, Typography, IconButton, Grid, List, ListItemButton, ListItemIcon, ListItemText, Collapse, Avatar, Menu, MenuItem, Checkbox, TextField } from '@mui/material';
+import { Box, Button, Container, CssBaseline, Paper, Typography, IconButton, 
+        Grid, List, ListItemButton, ListItemIcon, ListItemText, Collapse, Avatar, 
+        Menu, MenuItem, Checkbox, TextField } from '@mui/material';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 
@@ -22,7 +24,7 @@ import StarIcon from '@mui/icons-material/Star';
 import Popup from './Pop_Up_1'; 
 
 
-export default function Configuracoes() {
+export default function Edt_Tarefa() {
     const navigate = useNavigate();
 
     const handleCancelarClick = () => {
@@ -102,8 +104,12 @@ export default function Configuracoes() {
                 }}
             >
                 {getAllUsers().map((user, index) => (
-                    <MenuItem key={index} onClick={() => handleMenuItemClick(user)}>
-                        <Checkbox checked={assignedUsers.includes(user)} />
+                    <MenuItem key={index} 
+                        onClick={() => handleMenuItemClick(user)}
+                    >
+                        <Checkbox 
+                            checked={assignedUsers.includes(user)} 
+                        />
                         <ListItemText primary={user} />
                     </MenuItem>
                 ))}
@@ -140,7 +146,11 @@ export default function Configuracoes() {
                     <Avatar 
                         alt={assignedUsers[0]} 
                         src={`https://source.unsplash.com/32x32/?${assignedUsers[0]}`} 
-                        sx={{ width: 24, height: 24, marginLeft: 10 }} 
+                        sx={{
+                            width: 24, 
+                            height: 24, 
+                            marginLeft: 10 
+                        }} 
                     />
                 );
             } else {
@@ -151,7 +161,11 @@ export default function Configuracoes() {
                                 key={index} 
                                 alt={user} 
                                 src={`https://source.unsplash.com/32x32/?${user}`} 
-                                sx={{ width: 24, height: 24, ml: -1 }} 
+                                sx={{ 
+                                    width: 24, 
+                                    height: 24, 
+                                    ml: -1 
+                                }} 
                             />
                         ))}
                     </>
@@ -167,9 +181,16 @@ export default function Configuracoes() {
                 component="nav" 
                 aria-labelledby="task-list-header"
             >
-                <ListItemButton onClick={handleListClick} sx={{ pr: 0 }}>
-                    <ListItemIcon sx={{ mr: -3 }}>
-                        <GroupOutlinedIcon sx={{ color: '#07382E' }} />
+                <ListItemButton 
+                    onClick={handleListClick} 
+                    sx={{ pr: 0 }}
+                >
+                    <ListItemIcon 
+                        sx={{ mr: -3 }}
+                    >
+                        <GroupOutlinedIcon 
+                            sx={{ color: '#07382E' }} 
+                        />
                     </ListItemIcon>
 
                     <ListItemText 
@@ -179,7 +200,10 @@ export default function Configuracoes() {
                     {renderAvatars()}
                     <ListItemText 
                         primary={summary} 
-                        primaryTypographyProps={{ variant: 'body2', fontSize: '0.79rem' }} 
+                        primaryTypographyProps={{ 
+                            variant: 'body2', 
+                            fontSize: '0.79rem' 
+                        }} 
                         sx={{ marginLeft:1 }} 
                     />
                     <IconButton onClick={handleUserListClick}> 
@@ -187,17 +211,35 @@ export default function Configuracoes() {
                     </IconButton>
                 </ListItemButton>
 
-                <Collapse in={open} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
+                <Collapse in={open} 
+                    timeout="auto" 
+                    unmountOnExit
+                >
+                    <List 
+                        component="div" 
+                        disablePadding
+                    >
                         {assignedUsers.length === 0 ? (
                             <ListItemButton sx={{ pl: 4 }}>
-                                <ListItemText primary="Nenhum atribuído" />
+                                <ListItemText 
+                                    primary="Nenhum atribuído" 
+                                />
                             </ListItemButton>
                         ) : (
                             getAllUsers().map((user, index) => (
-                                <ListItemButton key={index} sx={{ pl: 4 }} onClick={handleUserClick}>
-                                    <Checkbox checked={assignedUsers.includes(user)} onClick={() => handleMenuItemClick(user)} />
-                                    <Avatar alt={user} src={`https://source.unsplash.com/32x32/?${user}`} />
+                                <ListItemButton 
+                                    key={index} 
+                                    sx={{ pl: 4 }} 
+                                    onClick={handleUserClick}
+                                >
+                                    <Checkbox 
+                                        checked={assignedUsers.includes(user)} 
+                                        onClick={() => handleMenuItemClick(user)} 
+                                    />
+                                    <Avatar 
+                                        alt={user} 
+                                        src={`https://source.unsplash.com/32x32/?${user}`} 
+                                    />
                                     <ListItemText primary={user} />
                                 </ListItemButton>
                             ))
@@ -216,7 +258,8 @@ export default function Configuracoes() {
         } else if (assignedUsers.length <= 3) {
             return assignedUsers.join(", ");
         } else {
-            return `${assignedUsers[0]} e +${assignedUsers.length - 1} pessoas`;
+            return `${assignedUsers[0]} 
+            e +${assignedUsers.length - 1} pessoas`;
         }
     };
 
@@ -224,7 +267,8 @@ export default function Configuracoes() {
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <Paper elevation={2} 
-                sx={{ mt: 5, p: 2, 
+                sx={{   
+                    mt: 5, p: 2, 
                     display: 'flex', 
                     flexDirection: 'column', 
                     alignItems: 'center', 
@@ -233,70 +277,149 @@ export default function Configuracoes() {
             >
                                  {/* CABEÇALHO  */}
                 <CheckBoxOutlineBlankIcon 
-                    sx={{   width: 50, 
-                            height: 100, 
-                            color: '#07382E', 
-                            mt: -1 
+                    sx={{   
+                        width: 50, 
+                        height: 100, 
+                        color: '#07382E', 
+                        mt: -1 
                     }} 
                 />
                 <Typography 
                     component="h1" 
                     variant="h9" 
-                    sx={{ color: '#07382E', mt: -1 }}
+                    sx={{ 
+                        color: '#07382E', 
+                        mt: -1 
+                    }}
                 >
                     Editar Tarefa 
                 </Typography>
 
+                                    {/* FORMULARIO EDIÇÃO DE TAREFA  */}
                 <form onSubmit={handleSubmit}>
-                    <Box sx={{ boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', width: '100%', height: '100%', borderRadius: '5px', marginTop: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '-10px' }}>
-                        <Grid container alignItems="center" spacing={1}>
+                    <Box 
+                        sx={{   
+                            boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
+                            width: '100%', 
+                            height: '100%', 
+                            borderRadius: '5px', 
+                            marginTop: '5%', 
+                            display: 'flex', 
+                            justifyContent: 'center', 
+                            alignItems: 'center', 
+                            padding: '-10px' 
+                        }}
+                    >
+                        <Grid 
+                            container 
+                            alignItems="center" 
+                            spacing={1}
+                        >
+                                    {/* CAMPO TITULO  */}
                             <Grid item>
                                 <IconButton disabled>
-                                    <CreateOutlinedIcon sx={{ color: '#07382E', marginLeft: '60%', alignItems: 'center' }} />
+                                    <CreateOutlinedIcon 
+                                        sx={{ 
+                                            color: '#07382E', 
+                                            marginLeft: '60%', 
+                                            alignItems: 'center' 
+                                        }} 
+                                    />
                                 </IconButton>
                             </Grid>
+
                             <Grid item>
-                                <Typography variant="subtitle1" gutterBottom sx={{ marginTop: '10%', textAlign: 'center', fontWeight: 'bold' }}>
+                                <Typography 
+                                    variant="subtitle1" 
+                                    gutterBottom 
+                                    sx={{   
+                                        marginTop: '10%', 
+                                            textAlign: 'center',
+                                            fontWeight: 'bold' 
+                                    }}
+                                >
                                     Título:
                                 </Typography>
                             </Grid>
+
                             <Grid item>
                             <TextField
                                 fullWidth
                                 value={titulo}
-                                onChange={(event) => setTitulo(event.target.value)}
+                                onChange={(event) => 
+                                    setTitulo(event.target.value)}
                                 variant="standard"
                             />
                             </Grid>
                         </Grid>
                     </Box>
-
+                                    {/* CAMPO DATA DE CONCLUSÃO  */}
                     <Box 
-                    sx={{ boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', width: '100%', height: '100%', borderRadius: '5px', marginTop: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '-10px' }}>
+                        sx={{   
+                            boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
+                            width: '100%', 
+                            height: '100%', 
+                            borderRadius: '5px', 
+                            marginTop: '5%', 
+                            display: 'flex', 
+                            justifyContent: 'center', 
+                            alignItems: 'center', 
+                            padding: '-10px' 
+                            }}
+                    >
                         <Grid container alignItems="center" spacing={1}>
+
                             <Grid item>
                                 <IconButton disabled>
-                                    <CalendarMonthIcon sx={{ color: '#07382E', marginLeft: '60%' }} />
+                                    <CalendarMonthIcon 
+                                        sx={{   
+                                            color: '#07382E', 
+                                            marginLeft: '60%'
+                                        }} 
+                                    />
                                 </IconButton>
                             </Grid>
+
                             <Grid item>
-                                <Typography variant="subtitle1" gutterBottom sx={{ marginTop: '5%', textAlign: 'center', fontWeight: 'bold' }}>
+                                <Typography 
+                                    variant="subtitle1" 
+                                    gutterBottom 
+                                    sx={{ 
+                                        marginTop: '5%', 
+                                        textAlign: 'center', 
+                                        fontWeight: 'bold' 
+                                    }}
+                                >
                                     Data de Conclusão:
                                 </Typography>
                             </Grid>
+
                             <Grid item xs={4.5}>
                                 <TextField
                                     fullWidth
                                     type="date"
                                     value={dataConclusao}
-                                    onChange={(event) => setDataConclusao(event.target.value)}
+                                    onChange={(event) => 
+                                        setDataConclusao(event.target.value)}
                                     variant="standard"
                                 />
                             </Grid>
                         </Grid>
                     </Box>
-
-                <Box sx={{ boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', width: '100%', height: '100%', borderRadius: '5px', marginTop: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '-10px' }}>
+                                    {/* CAMPO USUARIOS ATRIBUIDOS */}
+                <Box 
+                    sx={{   
+                        boxShadow: '2px 0px 12px 5px rgba(0, 0, 0, 0.2)', 
+                        width: '100%', 
+                        height: '100%', 
+                        borderRadius: '5px', 
+                        marginTop: '5%', 
+                        display: 'flex', 
+                        justifyContent: 'center', 
+                        alignItems: 'center', 
+                        padding: '-10px' 
+                        }}
+                >
                     <TaskList />
                 </Box>
 
@@ -313,75 +436,98 @@ export default function Configuracoes() {
                         padding: '10px'
                     }}
                 >
+                                    {/* CAMPO PARA DESCRIÇÃO DA TAREFA  */}
                     <Grid container alignItems="center" spacing={1}>
                         <Grid item>
                             <IconButton disabled>
-                                <EditNoteOutlinedIcon sx={{ color: '#07382E' }} /> 
+                                <EditNoteOutlinedIcon 
+                                    sx={{ color: '#07382E' }} 
+                                /> 
                             </IconButton>
                         </Grid>
+
                         <Grid item>
-                            <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 'bold' }}>
+                            <Typography 
+                                variant="subtitle1" 
+                                gutterBottom 
+                                sx={{ fontWeight: 'bold' }}
+                            >
                                 Descrição:
                             </Typography>
                         </Grid>
                     </Grid>
+
                     <TextField
                         fullWidth
                         value={descricao}
-                        onChange={(event) => setDescricao(event.target.value)}
+                        onChange={(event) => 
+                            setDescricao(event.target.value)}
                         variant="standard"
                     />
                 </Box>
             </form>
+                                    {/* BOTÕES DE CANCELAR E SALVAR  */}
+            <Grid 
+                container 
+                justifyContent="center" 
+                alignItems="center" s
+                pacing={2}
+            >
 
-            <Grid container justifyContent="center" alignItems="center" spacing={2}>
-<Grid item xs={6}>
-    <Button
-    onClick={handleCancelarClick}
-        type="submit"
-        fullWidth
-        variant="outlined"
-        sx={{
-            mt: 2,
-            mb: 5,
-            maxWidth: "180px",
-            backgroundColor: "transparent",
-            color: "#FF0000",
-            borderColor: "#FF0000",
-            "&:hover": {
-            backgroundColor: "#FF0000",
-            color: "#FFFFFF",
-            borderBlockColor: 'transparent'
-            }
-        }}
-        
-    >
-        CANCELAR 
-    </Button>
-</Grid>
-<Grid item xs={6}>
-    <Button
-        type="submit"
-        fullWidth
-        variant="outlined"
-        sx={{
-            mt: 2,
-mb: 5,
-maxWidth: "180px",
-backgroundColor: "#FFFFFF",
-color: "#07382E",
-borderColor: "#07382E",
-"&:hover": { backgroundColor: "#07382E", color: "#FFFFFF" }
-        }}
-        onClick={handleOpenPopup} 
-    >
-        SALVAR 
-    </Button>
-    </Grid>
-</Grid>
+            <Grid item xs={6}>
+                <Button
+                    onClick={handleCancelarClick}
+                    type="submit"
+                    fullWidth
+                    variant="outlined"
+                    sx={{
+                        mt: 2,
+                        mb: 5,
+                        maxWidth: "180px",
+                        backgroundColor: "transparent",
+                        color: "#FF0000",
+                        borderColor: "#FF0000",
+                        "&:hover": {
+                        backgroundColor: "#FF0000",
+                        color: "#FFFFFF",
+                        borderBlockColor: 'transparent'
+                        }
+                    }}
+                    
+                >
+                    CANCELAR 
+                </Button>
+            </Grid>
+
+            <Grid item xs={6}>
+                <Button
+                    onClick={handleOpenPopup}
+                    type="submit"
+                    fullWidth
+                    variant="outlined"
+                    sx={{
+                        mt: 2,
+                        mb: 5,
+                        maxWidth: "180px",
+                        backgroundColor: "#FFFFFF",
+                        color: "#07382E",
+                        borderColor: "#07382E",
+                        "&:hover": { 
+                        backgroundColor: "#07382E", 
+                        color: "#FFFFFF" 
+                        }
+                    }} 
+                >
+                    SALVAR 
+                </Button>
+                </Grid>
+            </Grid>
 
                                     {/* ABERTURA DE POP-UP  */}
-            <Popup open={openPopup} handleClose={handleClosePopup} />
+            <Popup 
+                open={openPopup} 
+                handleClose={handleClosePopup} 
+            />
 
                                     {/* MENU PRINCIPAL   */}
             <Box elevation={3} >
@@ -392,12 +538,13 @@ borderColor: "#07382E",
                 onChange={(event, newValue) => {
                 setValue(newValue);
                 }}
-                sx={{  position: 'fixed', 
-                        bottom: 0, 
-                        left: 0, 
-                        right: 0, 
-                        backgroundColor: '#5DA18F80', 
-                        height: '9%'
+                sx={{  
+                    position: 'fixed', 
+                    bottom: 0, 
+                    left: 0, 
+                    right: 0, 
+                    backgroundColor: '#5DA18F80', 
+                    height: '9%'
                 }}
             >
 
@@ -405,16 +552,20 @@ borderColor: "#07382E",
                 onClick={handleHome}
                 label="Home" 
                 icon={<HomeIcon 
-                    sx={{ fill: value === 0 ? '#07382E' : 'none', 
+                    sx={{ 
+                        fill: value === 0 ? '#07382E' : 'none', 
                         stroke: '#07382E', 
                         strokeWidth: 2, 
                         fontSize: '2rem' 
                     }} 
                 />}
-                    sx={{ color:  '#07382E', 
+                    sx={{ 
+                        color:  '#07382E', 
                         fontSize: '3em', 
                         fontWeight: 'bold', 
-                        '& .MuiBottomNavigationLabel': { gap: '10x' } 
+                        '& .MuiBottomNavigationLabel': { 
+                            gap: '10x' 
+                        } 
                 }}
             />
 
@@ -422,15 +573,19 @@ borderColor: "#07382E",
                 onClick={handleProgresso}
                 label="Progresso" 
                 icon={<SchoolIcon 
-                        sx={{ fill: value === 1 ? '#07382E' : 'none', 
+                        sx={{ 
+                            fill: value === 1 ? '#07382E' : 'none', 
                             stroke: '#07382E', 
                             strokeWidth: 2, 
                             fontSize: '2rem' }} 
                     />}
-                        sx={{ color: '#07382E', 
+                        sx={{ 
+                            color: '#07382E', 
                             fontSize: '2rem', 
                             fontWeight: 'bold', 
-                            '& .MuiBottomNavigationLabel': { gap: '10px' } 
+                            '& .MuiBottomNavigationLabel': { 
+                                gap: '10px' 
+                            } 
                         }}
             />
 
@@ -438,15 +593,20 @@ borderColor: "#07382E",
                 onClick={handleAvaliacao}
                 label="Avaliação" 
                 icon={<StarIcon 
-                        sx={{ fill: value === 2 ? '#07382E' : 'none', 
+                        sx={{ 
+                            fill: value === 2 ? '#07382E' : 'none', 
                             stroke: '#07382E', 
                             strokeWidth: 2, 
-                            fontSize: '2rem'  }} 
+                            fontSize: '2rem'  
+                        }} 
                     />}
-                        sx={{ color: '#07382E', 
+                        sx={{ 
+                            color: '#07382E', 
                             fontSize: '2rem', 
                             fontWeight: 'bold', 
-                            '& .MuiBottomNavigationLabel': { gap: '10px' } 
+                            '& .MuiBottomNavigationLabel': { 
+                                gap: '10px' 
+                            } 
                         }}
             />
 
