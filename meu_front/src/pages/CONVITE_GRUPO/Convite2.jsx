@@ -1,7 +1,11 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import {Box,Button,Container,CssBaseline,TextField,Typography,Paper} from '@mui/material';
+
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
+
 import IconButton from '@mui/material/IconButton';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
@@ -9,9 +13,16 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 export default function LinkInput({ initialLink }) {
     const [link, setLink] = React.useState(initialLink || '');
 
-    const handleBack = () => {
-    
+    const navigate = useNavigate();
+
+    const handleConviteQR = () => {
+        navigate('/Convitee');
     };
+
+    const handleFecharConvite = () => {
+        navigate('/Home');
+    };
+
 
 
     const handleSubmit = (event) => {
@@ -32,13 +43,16 @@ export default function LinkInput({ initialLink }) {
 
             <Container component="main" maxWidth="xs">
 
-                <Paper elevation={2} 
-                    sx={{ mt: 8, 
+                <Paper 
+                    elevation={2} 
+                    sx={{ 
+                        mt: 8, 
                         p: 2, 
                         display: 'flex', 
                         flexDirection: 'column', 
                         alignItems: 'center', 
-                        boxShadow: "0" }}
+                        boxShadow: "0" 
+                    }}
                 >
                 </Paper>
 
@@ -53,15 +67,29 @@ export default function LinkInput({ initialLink }) {
                             }}
                         >
 
-                            <Stack direction="row" spacing={2}>
-                                <Avatar alt="grupo" src={Avatar}
-                                sx={{   width: 150,
+                            <Stack 
+                                direction="row" 
+                                spacing={2}
+                            >
+                                <Avatar 
+                                    alt="grupo" 
+                                    src={Avatar}
+                                    sx={{   
+                                        width: 150,
                                         height: 150,
-                                        border: '2px solid #07382E' }}
+                                        border: '2px solid #07382E' 
+                                    }}
                                 />
                             </Stack>
 
-                            <Typography component="h1" variant="h9" sx={{ mt: 4, fontWeight: 'bold', }}> 
+                            <Typography 
+                                component="h1" 
+                                variant="h9" 
+                                sx={{ 
+                                    mt: 4, 
+                                    fontWeight: 'bold', 
+                                }}
+                            > 
                                 Convidar Membro
                             </Typography>
                             
@@ -69,31 +97,42 @@ export default function LinkInput({ initialLink }) {
                                 variant="outlined" 
                                 label="Link"
                                 value={link}
-                                onChange={(event) => setLink(event.target.value)}
+                                onChange={(event) => 
+                                    setLink(event.target.value)}
                                 InputProps={{
                                 endAdornment:   (
-                                    <IconButton onClick={handleCopyLink}>
+                                    <IconButton 
+                                    onClick={handleCopyLink}>
                                         <FileCopyIcon 
-                                        sx={{ color: '#07382E' }}
+                                            sx={{ 
+                                                color: '#07382E' 
+                                            }}
                                         />
                                     </IconButton>
                                                 ),
                                             }}
-                                sx={{   mt: 5,
-                                        borderColor: '#07382E',
-                                        '& fieldset': { borderColor: '#07382E' }, 
-                                        width: '95%', 
-                                        height:'60px'  
-                                    }}
-                                    size="small"
+                                            size="small"
+                                        sx={{   
+                                            mt: 5,
+                                            borderColor: '#07382E',
+                                            '& fieldset': {   
+                                                borderColor: '#07382E' 
+                                            }, 
+                                            width: '95%', 
+                                            height:'60px'  
+                                        }}
+                                    
                             />
 
                             <Button
                                     variant="outlined"
                                     onClick={handleShareWhatsApp}
-                                    sx={{   marginTop: '10px', 
-                                            color: '#07382E', 
-                                            '& .MuiSvgIcon-root': { color: '#07382E' }, 
+                                    sx={{   
+                                        marginTop: '10px', 
+                                        color: '#07382E', 
+                                        '& .MuiSvgIcon-root': { 
+                                            color: '#07382E' 
+                                        }, 
                                             border: 'none'
                                         }}
                                     startIcon={<WhatsAppIcon />}
@@ -116,26 +155,37 @@ export default function LinkInput({ initialLink }) {
                             Gerenciamento de Equipe
                             </Typography>
 
-                            <Button type="submit" fullWidth variant="outlined"
+                            <Button 
+                                onClick={handleConviteQR}
+                                type="submit" 
+                                fullWidth variant="outlined"
                                 sx={{ mt: 5, 
                                     backgroundColor:"#fff", 
                                     color: "#07382E", 
                                     borderColor: '#07382E',
-                                    '&:hover': {borderColor: '#07382E',
-                                    backgroundColor: 'transparent',}, 
+                                    '&:hover': {
+                                        borderColor: '#07382E',
+                                        backgroundColor: 'transparent',
+                                    }, 
                                 }}
                             >
                                     CONVIDAR POR QR CODE
                             </Button>
 
-                            <Button type="submit" fullWidth variant="outlined"
-                                sx={{   mt: 2,
-                                        mb: 5, 
-                                        backgroundColor:"#fff", 
-                                        color: "#07382E", 
+                            <Button 
+                            onClick={handleFecharConvite}
+                            type="submit" 
+                            fullWidth variant="outlined"
+                                sx={{   
+                                    mt: 2,
+                                    mb: 5, 
+                                    backgroundColor:"#fff", 
+                                    color: "#07382E", 
+                                    borderColor: '#07382E',
+                                    '&:hover': {
                                         borderColor: '#07382E',
-                                        '&:hover': {borderColor: '#07382E',
-                                        backgroundColor: 'transparent',}, 
+                                        backgroundColor: 'transparent',
+                                    }, 
                                     }}
                             >
                                     FECHAR
