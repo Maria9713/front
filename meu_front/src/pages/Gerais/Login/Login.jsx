@@ -8,11 +8,11 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Logo from '../../img/logo.svg'
+import Logo from '../../../logo.svg'
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import api from "../../api";
+import api from "../../../api";
 
 
 

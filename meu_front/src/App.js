@@ -4,17 +4,17 @@ import ProtectedRouter from "./protectedRouter";
 import api from './api.js';
 
 // Importe suas páginas aqui
-import Login from "./pages/Login/Login";
+import Login from "./pages/Gerais/Login/Login.jsx";
 
-import Termo from "./pages/Termo/Termo.jsx";
+import Termo from "./pages/Gerais/Termo/Termo.jsx";
 
-import Validacao1 from "./pages/VALICACAO/Validacao.jsx";
-import Validacao2 from "./pages/VALICACAO/Validacao2.jsx";
-import Validacao3 from "./pages/VALICACAO/validacao3.jsx";
+import Validacao1 from "./pages/Gerais/VALICACAO/Validacao.jsx";
+import Validacao2 from "./pages/Gerais/VALICACAO/Validacao2.jsx";
+import Validacao3 from "./pages/Gerais/VALICACAO/validacao3.jsx";
 
-import Redefinir1 from "./pages/ESQUECI_SENHA/Redefinir.jsx";
-import Redefinir2 from "./pages/ESQUECI_SENHA/Redefinir2.jsx";
-import Redefinir3 from "./pages/ESQUECI_SENHA/Redefinir 3.jsx";
+import Redefinir1 from "./pages/Gerais/ESQUECI_SENHA/Redefinir.jsx";
+import Redefinir2 from "./pages/Gerais/ESQUECI_SENHA/Redefinir2.jsx";
+import Redefinir3 from "./pages/Gerais/ESQUECI_SENHA/Redefinir 3.jsx";
 
 import GrupoCriado from "./pages/REPRESENTANTE/Grupo_Criado/GrupoCriado.jsx";
 import Convitee from "./pages/REPRESENTANTE/CONVITE_GRUPO/Convite.jsx";
@@ -29,13 +29,14 @@ import Detalhes from "./pages/REPRESENTANTE/TAREFAS/Tarefas2.jsx";
 import Edt_Tarefa from "./pages/REPRESENTANTE/TAREFAS/Tarefas5.jsx";
 import Concluida from "./pages/REPRESENTANTE/TAREFAS/Tarefas4.jsx";
 
-import Eventos from "./pages/CALENDARIO/Eventos1.jsx";
-import CriarEvento from "./pages/CALENDARIO/Eventos2.jsx";
-import Dt_Evento from "./pages/CALENDARIO/Eventos3.jsx";
-import Edt_Evento from "./pages/CALENDARIO/Eventos4.jsx";
+import Eventos from "./pages/REPRESENTANTE/CALENDARIO/Eventos1.jsx";
+import CriarEvento from "./pages/REPRESENTANTE/CALENDARIO/Eventos2.jsx";
+import Dt_Evento from "./pages/REPRESENTANTE/CALENDARIO/Eventos3.jsx";
+import Edt_Evento from "./pages/REPRESENTANTE/CALENDARIO/Eventos4.jsx";
 
-import Central_Config from "./pages/CONFIGURAÇÕES/Config.jsx"
-
+import Central_Config from "./pages/Gerais/CONFIGURAÇÕES/Config.jsx";
+import Central_Ajuda from "./pages/Gerais/CONFIGURAÇÕES/Central_Ajuda.jsx";
+import Termo_2 from "./pages/Gerais/CONFIGURAÇÕES/Termo_2.jsx";
 
 
 
@@ -85,7 +86,8 @@ function App() {
                     <Route path="/Edt_Evento" element={<Edt_Evento />} />
 
                     <Route path="/Central_Config" element={<Central_Config />} />
-
+                    <Route path="/Central_Ajuda" element={<Central_Ajuda />} />
+                    <Route path="/Termo_2" element={<Termo_2 />} />
 
                     <Route path="/Teste" element={<Teste />} />
 

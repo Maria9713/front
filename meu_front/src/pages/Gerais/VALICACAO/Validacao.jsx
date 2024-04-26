@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Box,Button,Container,CssBaseline,Typography,IconButton,Paper} from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Avatar from '@mui/material/Avatar';
-import Logo from '../../img/logo.svg'
+import Logo from '../../../img/logo.svg';
 import { useState } from 'react';
 
 

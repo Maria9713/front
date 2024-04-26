@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Box,Button,Container,CssBaseline,TextField,Typography,IconButton} from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Avatar from '@mui/material/Avatar';
-import Chave from '../../img/Group 36.svg'
+import Chave from './Group 36.svg'
 
 export default function ForgotPassword() {
   
