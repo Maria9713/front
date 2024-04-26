@@ -119,8 +119,8 @@ const Excluir_Tarefa = ({ open, handleClose }) => {
         </Grid>
 
         <PopUp3 
-        open={openPopup} 
-        handleClose={handleClosePopup2} 
+          open={openPopup} 
+          handleClose={handleClosePopup2} 
         />
 
       </div>

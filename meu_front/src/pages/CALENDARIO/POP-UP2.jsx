@@ -15,7 +15,10 @@ const POPUP2 = ({ open, handleClose }) => {
   };
 
   return (
-    <Modal open={open} onClose={handleClose}>
+    <Modal 
+      open={open} 
+      onClose={handleClose}
+    >
       <div
         style={{
           position: 'absolute',
@@ -30,7 +33,11 @@ const POPUP2 = ({ open, handleClose }) => {
         }}
       >
         <DeleteForeverOutlinedIcon
-          sx={{ width: 300, height: 120, color: '#07382E' }}
+          sx={{ 
+            width: 300, 
+            height: 120, 
+            color: '#07382E' 
+          }}
         />
         <Typography
           variant="h5"
@@ -42,13 +49,23 @@ const POPUP2 = ({ open, handleClose }) => {
         >
           Excluir Evento?
         </Typography>
+
         <Typography
           variant="body2"
-          sx={{ marginTop: '5%', textAlign: 'center', fontSize: '1rem' }}
+          sx={{ 
+            marginTop: '5%', 
+            textAlign: 'center', 
+            fontSize: '1rem' 
+          }}
         >
           Certeza que deseja excluir este Evento?
         </Typography>
-        <Grid container spacing={2} sx={{ marginTop: '6%' }}>
+
+        <Grid 
+          container 
+          spacing={2} 
+          sx={{ marginTop: '6%' }}
+        >
           <Grid item xs={6}>
             <Button
               onClick={handleClose}
@@ -96,7 +113,10 @@ const POPUP2 = ({ open, handleClose }) => {
             </Button>
           </Grid>
         </Grid>
-        <PopUp3 open={openPopup} handleClose={handleClosePopup2} />
+        <PopUp3 
+          open={openPopup} 
+          handleClose={handleClosePopup2} 
+        />
       </div>
     </Modal>
   );

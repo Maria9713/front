@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Modal, Typography, Button } from '@mui/material';
+import { Modal, Typography } from '@mui/material';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import { useNavigate } from 'react-router-dom';
 

@@ -16,25 +16,28 @@ import Redefinir1 from "./pages/ESQUECI_SENHA/Redefinir.jsx";
 import Redefinir2 from "./pages/ESQUECI_SENHA/Redefinir2.jsx";
 import Redefinir3 from "./pages/ESQUECI_SENHA/Redefinir 3.jsx";
 
-import GrupoCriado from "./pages/Grupo_Criado/GrupoCriado.jsx";
-import Convitee from "./pages/CONVITE_GRUPO/Convite.jsx";
-import Convite2 from "./pages/CONVITE_GRUPO/Convite2.jsx";
+import GrupoCriado from "./pages/REPRESENTANTE/Grupo_Criado/GrupoCriado.jsx";
+import Convitee from "./pages/REPRESENTANTE/CONVITE_GRUPO/Convite.jsx";
+import Convite2 from "./pages/REPRESENTANTE/CONVITE_GRUPO/Convite2.jsx";
 
 import Home from "./pages/Home/Home.jsx";
 import Menu1  from "./pages/Home/Menu.Principal.jsx";
 
-import Central_Tarefas from "./pages/TAREFAS/Tarefas1.jsx";
-import Criar_Tarefa from "./pages/TAREFAS/Tarefa3.jsx";
-import Detalhes from "./pages/TAREFAS/Tarefas2.jsx";
-import Edt_Tarefa from "./pages/TAREFAS/Tarefas5.jsx";
-import Concluida from "./pages/TAREFAS/Tarefas4.jsx";
+import Central_Tarefas from "./pages/REPRESENTANTE/TAREFAS/Tarefas1.jsx";
+import Criar_Tarefa from "./pages/REPRESENTANTE/TAREFAS/Tarefa3.jsx";
+import Detalhes from "./pages/REPRESENTANTE/TAREFAS/Tarefas2.jsx";
+import Edt_Tarefa from "./pages/REPRESENTANTE/TAREFAS/Tarefas5.jsx";
+import Concluida from "./pages/REPRESENTANTE/TAREFAS/Tarefas4.jsx";
 
 import Eventos from "./pages/CALENDARIO/Eventos1.jsx";
 import CriarEvento from "./pages/CALENDARIO/Eventos2.jsx";
 import Dt_Evento from "./pages/CALENDARIO/Eventos3.jsx";
 import Edt_Evento from "./pages/CALENDARIO/Eventos4.jsx";
 
-import Modelo from "./pages/MODELO/Modelo.jsx";
+import Central_Config from "./pages/CONFIGURAÇÕES/Config.jsx"
+
+
+
 
 import Teste from "./pages/Teste.jsx";
 
@@ -81,7 +84,8 @@ function App() {
                     <Route path="/Dt_Evento" element={<Dt_Evento/>} />
                     <Route path="/Edt_Evento" element={<Edt_Evento />} />
 
-                    <Route path='/Modelo' element={<Modelo/>}/>
+                    <Route path="/Central_Config" element={<Central_Config />} />
+
 
                     <Route path="/Teste" element={<Teste />} />
 
