@@ -38,7 +38,11 @@ import Central_Config from "./pages/Gerais/CONFIGURAÇÕES/Config.jsx";
 import Central_Ajuda from "./pages/Gerais/CONFIGURAÇÕES/Central_Ajuda.jsx";
 import Termo_2 from "./pages/Gerais/CONFIGURAÇÕES/Termo_2.jsx";
 
-import Modelo from "./pages/MODELO/Modelo.jsx"
+import Modelo from "./pages/Gerais/MODELO/Modelo.jsx";
+
+import Central_Equipe from "./pages/GERENCIAMENTO_EQUIPE/Gerenciamento.jsx";
+import Info_Equipe from "./pages/GERENCIAMENTO_EQUIPE/Info_Equipe.jsx";
+import Edt_Equipe from "./pages/GERENCIAMENTO_EQUIPE/Edt_Equipe.jsx";
 
 import Teste from "./pages/Teste.jsx";
 
@@ -90,6 +94,10 @@ function App() {
                     <Route path="/Termo_2" element={<Termo_2 />} />
 
                     <Route path="/Modelo" element={<Modelo />} />
+
+                    <Route path="/Central_Equipe" element={<Central_Equipe />} />
+                    <Route path="/Info_Equipe" element={<Info_Equipe />} />
+                    <Route path="/Edt_Equipe" element={<Edt_Equipe />} />
 
                     <Route path="/Teste" element={<Teste />} />
 
