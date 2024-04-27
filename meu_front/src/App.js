@@ -38,7 +38,7 @@ import Central_Config from "./pages/Gerais/CONFIGURAÇÕES/Config.jsx";
 import Central_Ajuda from "./pages/Gerais/CONFIGURAÇÕES/Central_Ajuda.jsx";
 import Termo_2 from "./pages/Gerais/CONFIGURAÇÕES/Termo_2.jsx";
 
-
+import Modelo from "./pages/MODELO/Modelo.jsx"
 
 import Teste from "./pages/Teste.jsx";
 
@@ -88,6 +88,8 @@ function App() {
                     <Route path="/Central_Config" element={<Central_Config />} />
                     <Route path="/Central_Ajuda" element={<Central_Ajuda />} />
                     <Route path="/Termo_2" element={<Termo_2 />} />
+
+                    <Route path="/Modelo" element={<Modelo />} />
 
                     <Route path="/Teste" element={<Teste />} />
 
