@@ -300,7 +300,7 @@ export default function Central_Ajuda() {
                             />
                         </Box> 
                     </form>
-                                                                {/* BOTÃO PARA ENVIAR TAREFA  */}
+                                                                {/* BOTÃO PARA ENVIAR RELATO  */}
                         <Grid 
                             container 
                             justifyContent="center" 

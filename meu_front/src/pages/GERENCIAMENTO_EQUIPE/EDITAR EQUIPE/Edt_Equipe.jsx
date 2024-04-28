@@ -29,7 +29,7 @@ const members = [
     // Adicione mais membros conforme necessário
 ];
 
-export default function Info_Equipe() {
+export default function Edt_Equipe() {
     const navigate = useNavigate();
 
     const handleBack = () => {

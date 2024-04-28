@@ -42,8 +42,9 @@ import Modelo from "./pages/Gerais/MODELO/Modelo.jsx";
 
 import Central_Equipe from "./pages/GERENCIAMENTO_EQUIPE/Gerenciamento.jsx";
 import Info_Equipe from "./pages/GERENCIAMENTO_EQUIPE/Info_Equipe.jsx";
-import Edt_Equipe from "./pages/GERENCIAMENTO_EQUIPE/Edt_Equipe.jsx";
-import Remover_Membro from "./pages/GERENCIAMENTO_EQUIPE/Remover_Membro.jsx";
+import Edt_Equipe from "./pages/GERENCIAMENTO_EQUIPE/EDITAR EQUIPE/Edt_Equipe.jsx";
+import Remover_Membro from "./pages/GERENCIAMENTO_EQUIPE/REMOVER MEMBRO/Remover_Membro.jsx";
+import Desfazer_Equipe from "./pages/GERENCIAMENTO_EQUIPE/DESFAZER EQUIPE/Desfazer_Equipe.jsx"
 
 import Teste from "./pages/Teste.jsx";
 
@@ -100,6 +101,7 @@ function App() {
                     <Route path="/Info_Equipe" element={<Info_Equipe />} />
                     <Route path="/Edt_Equipe" element={<Edt_Equipe />} />
                     <Route path="/Remover_Membro" element={<Remover_Membro />} />
+                    <Route path="/Desfazer_Equipe" element={<Desfazer_Equipe />} />
 
                     <Route path="/Teste" element={<Teste />} />
 

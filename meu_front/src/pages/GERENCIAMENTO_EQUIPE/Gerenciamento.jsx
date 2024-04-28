@@ -12,11 +12,9 @@ import {
 import Link from '@mui/material/Link';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import GroupsIcon from '@mui/icons-material/Groups';
-// import Popup from "./Avaliacao";
 
 export default function Geral_Equipe() {
 
-    // const [openPopup, setOpenPopup] = useState(false);
     const navigate = useNavigate();
 
     // Função para voltar para a página inicial
@@ -24,15 +22,6 @@ export default function Geral_Equipe() {
         navigate('/');
     };
 
-    // // Função para abrir o pop-up
-    // const handleOpenPopup = () => {
-    //     setOpenPopup(true);
-    // };
-
-    // // Função para fechar o pop-up
-    // const handleClosePopup = () => {
-    //     setOpenPopup(false);
-    // };
 
     return (
         <Container 
@@ -120,7 +109,7 @@ export default function Geral_Equipe() {
                                 }}
                         >
                             <Link 
-                                href="/" 
+                                href="/Convitee" 
                                 color="inherit" 
                                 underline="none"
                             >
@@ -157,7 +146,7 @@ export default function Geral_Equipe() {
                                 }} 
                         >
                             <Link 
-                                // onClick={handleOpenPopup}
+                                href="/Desfazer_Equipe"
                                 color="inherit" 
                                 underline="none"
                                 style={{ 
@@ -169,11 +158,6 @@ export default function Geral_Equipe() {
                             </Link>
                         </Typography>
                     </Box>
-
-                    {/* <Popup 
-                        open={openPopup} 
-                        handleClose={handleClosePopup} 
-                    /> */}
                     
                 </Paper>
         </Container>

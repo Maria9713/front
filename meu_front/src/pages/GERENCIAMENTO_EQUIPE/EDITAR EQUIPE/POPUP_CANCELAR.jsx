@@ -3,7 +3,7 @@ import { Modal, Typography, Button, Grid } from '@mui/material';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import PopUp3 from './POPUP_CANCELAR2';
 
-const Excluir_Tarefa = ({ open, handleClose }) => {
+const EXCLUIR_ALTERAÇÕES = ({ open, handleClose }) => {
   const [openPopup, setOpenPopup] = useState(false);
 
   const handleOpenPopup = () => {
@@ -129,4 +129,4 @@ const Excluir_Tarefa = ({ open, handleClose }) => {
   );
 };
 
-export default Excluir_Tarefa;
+export default EXCLUIR_ALTERAÇÕES;

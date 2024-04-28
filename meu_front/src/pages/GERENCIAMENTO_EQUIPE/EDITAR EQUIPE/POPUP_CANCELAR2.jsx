@@ -3,7 +3,7 @@ import { Modal, Typography } from '@mui/material';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { useNavigate } from 'react-router-dom';
 
-const Tarefa_Excluida = ({ open, handleClose }) => {
+const ALTERAÇÕES_EXCLUIDAS = ({ open, handleClose }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -73,4 +73,4 @@ const Tarefa_Excluida = ({ open, handleClose }) => {
   
 };
 
-export default Tarefa_Excluida;
+export default ALTERAÇÕES_EXCLUIDAS;

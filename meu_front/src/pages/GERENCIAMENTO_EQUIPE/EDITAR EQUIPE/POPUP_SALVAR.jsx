@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Modal, Typography } from '@mui/material';
 import TaskAltOutlinedIcon from '@mui/icons-material/TaskAltOutlined';
 
-    const Tarefa_Criada = ({ open, handleClose }) => {
+    const ALTERAÇÕES_SALVAS = ({ open, handleClose }) => {
 
     const navigate = useNavigate();
 
@@ -62,4 +62,4 @@ import TaskAltOutlinedIcon from '@mui/icons-material/TaskAltOutlined';
     );
 };
 
-export default Tarefa_Criada;
+export default ALTERAÇÕES_SALVAS;
