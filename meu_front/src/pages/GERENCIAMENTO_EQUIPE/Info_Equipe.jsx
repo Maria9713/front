@@ -27,7 +27,7 @@ export default function Info_Equipe() {
     const navigate = useNavigate();
     // Função para voltar para a página inicial
     const handleBack = () => {
-        navigate('./Gerenciamento.jsx');
+        navigate('/Central_Equipe');
     };
 
     const [value, setValue] = React.useState(0);
@@ -182,7 +182,6 @@ export default function Info_Equipe() {
                                 {member.name}
                             </Typography>
                             </Box>
-                           
                         </ListItem>
                         ))}
                     </List>
@@ -206,6 +205,7 @@ export default function Info_Equipe() {
                             color: "#FF0000",
                             borderColor: "#FF0000",
                             "&:hover": {
+                                
                                 backgroundColor: "#FF0000",
                                 color: "#FFFFFF",
                                 borderBlockColor: 'transparent'
@@ -215,13 +215,6 @@ export default function Info_Equipe() {
                             Editar Informações
                         </Button>
                 </Box>
-                    
-
-                    
-
-
-
-            
             </Paper>
         </Container>
     )

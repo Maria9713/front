@@ -43,6 +43,7 @@ import Modelo from "./pages/Gerais/MODELO/Modelo.jsx";
 import Central_Equipe from "./pages/GERENCIAMENTO_EQUIPE/Gerenciamento.jsx";
 import Info_Equipe from "./pages/GERENCIAMENTO_EQUIPE/Info_Equipe.jsx";
 import Edt_Equipe from "./pages/GERENCIAMENTO_EQUIPE/Edt_Equipe.jsx";
+import Remover_Membro from "./pages/GERENCIAMENTO_EQUIPE/Remover_Membro.jsx";
 
 import Teste from "./pages/Teste.jsx";
 
@@ -98,6 +99,7 @@ function App() {
                     <Route path="/Central_Equipe" element={<Central_Equipe />} />
                     <Route path="/Info_Equipe" element={<Info_Equipe />} />
                     <Route path="/Edt_Equipe" element={<Edt_Equipe />} />
+                    <Route path="/Remover_Membro" element={<Remover_Membro />} />
 
                     <Route path="/Teste" element={<Teste />} />
 

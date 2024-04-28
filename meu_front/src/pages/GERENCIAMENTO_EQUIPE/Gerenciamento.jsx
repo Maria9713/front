@@ -139,7 +139,7 @@ export default function Geral_Equipe() {
                                 }}
                         >
                             <Link 
-                                href="/" 
+                                href="/Remover_Membro" 
                                 color="inherit" 
                                 underline="none"
                             >
