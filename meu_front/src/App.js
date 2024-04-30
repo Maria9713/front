@@ -34,9 +34,9 @@ import CriarEvento from "./pages/REPRESENTANTE/CALENDARIO/Eventos2.jsx";
 import Dt_Evento from "./pages/REPRESENTANTE/CALENDARIO/Eventos3.jsx";
 import Edt_Evento from "./pages/REPRESENTANTE/CALENDARIO/Eventos4.jsx";
 
-import Central_Config from "./pages/Gerais/CONFIGURAÇÕES/Config.jsx";
-import Central_Ajuda from "./pages/Gerais/CONFIGURAÇÕES/Central_Ajuda.jsx";
-import Termo_2 from "./pages/Gerais/CONFIGURAÇÕES/Termo_2.jsx";
+import Central_Config from "./pages/CONFIGURAÇÕES/Config.jsx";
+import Central_Ajuda from "./pages/CONFIGURAÇÕES/Central_Ajuda.jsx";
+import Termo_2 from "./pages/CONFIGURAÇÕES/Termo_2.jsx";
 
 import Modelo from "./pages/Gerais/MODELO/Modelo.jsx";
 
@@ -44,7 +44,10 @@ import Central_Equipe from "./pages/GERENCIAMENTO_EQUIPE/Gerenciamento.jsx";
 import Info_Equipe from "./pages/GERENCIAMENTO_EQUIPE/Info_Equipe.jsx";
 import Edt_Equipe from "./pages/GERENCIAMENTO_EQUIPE/EDITAR EQUIPE/Edt_Equipe.jsx";
 import Remover_Membro from "./pages/GERENCIAMENTO_EQUIPE/REMOVER MEMBRO/Remover_Membro.jsx";
-import Desfazer_Equipe from "./pages/GERENCIAMENTO_EQUIPE/DESFAZER EQUIPE/Desfazer_Equipe.jsx"
+import Desfazer_Equipe from "./pages/GERENCIAMENTO_EQUIPE/DESFAZER EQUIPE/Desfazer_Equipe.jsx";
+
+import Orçamento from  "./pages/Orçamento/Orcamento.jsx";
+import Orçamento2 from  "./pages/Orçamento/Orçamento2.jsx";
 
 import Teste from "./pages/Teste.jsx";
 
@@ -102,6 +105,9 @@ function App() {
                     <Route path="/Edt_Equipe" element={<Edt_Equipe />} />
                     <Route path="/Remover_Membro" element={<Remover_Membro />} />
                     <Route path="/Desfazer_Equipe" element={<Desfazer_Equipe />} />
+
+                    <Route path="/Orçamento" element={<Orçamento />} />
+                    <Route path="/Orçamento2" element={<Orçamento2 />} />
 
                     <Route path="/Teste" element={<Teste />} />
 
