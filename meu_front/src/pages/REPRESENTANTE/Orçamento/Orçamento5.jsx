@@ -12,14 +12,15 @@ import {
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import WorkHistoryOutlinedIcon from '@mui/icons-material/WorkHistoryOutlined';
+import PaidOutlinedIcon from '@mui/icons-material/PaidOutlined';
 
-export default function Configuracoes() {
+
+export default function Orçamento_Total() {
     const navigate = useNavigate();
 
-    // Função para voltar para a página inicial
+
     const handleBack = () => {
-        navigate('/');
+        navigate('/Software_Pagos2');
     };
 
     return (
@@ -52,7 +53,7 @@ export default function Configuracoes() {
                         />
                     </IconButton>
 
-                    <WorkHistoryOutlinedIcon
+                    <PaidOutlinedIcon
                         sx={{ 
                             width: 100, 
                             height: 100, 
@@ -65,15 +66,16 @@ export default function Configuracoes() {
                         variant="h9" 
                         sx={{ 
                             color: '#07382E', 
-                            mt: 2 
+                            mt: 2, 
+                            alignItems: "center"
                             }}
                     >
-                        Área de Atuação
+                        Orçamento Total
                     </Typography>
 
                     <Box 
                         sx={{ 
-                            width: '110%', 
+                            width: '115%', 
                             mt: 3 
                             }}
                     >
@@ -85,8 +87,31 @@ export default function Configuracoes() {
                                 textAlign: 'left'
                                 }}
                         >
-                          Por favor, informe a área de atuação do seu curso para que possamos
-                          calcular o valor médio do salário recebido na sua profissão. 
+                                    Aqui está o seu orçamento! 
+                                    Este valor foi calculado com base nas informações 
+                                    fornecidas nas etapas anteriores
+                        </Typography>
+
+                        </Box>
+
+                        <Box 
+                        sx={{ 
+                            width: '115%', 
+                            mt: 3 
+                            }}
+                    >
+                        <Typography 
+                            variant="subtitle1" 
+                            sx={{ 
+                                mt: 1, 
+                                mb: 1, 
+                                textAlign: 'left',
+                                color: '#4D4D4D', 
+                                }}
+                        >
+                            Ao avançar, você terá a opção de revisar e, 
+                            se necessário, ajustar o orçamento.Clique em 
+                            'Avançar' para mais detalhes sobre o seu orçamento.
                         </Typography>
 
                         </Box>
@@ -114,7 +139,7 @@ export default function Configuracoes() {
                     {/* </form> */}
 
                         <Button
-                            href={'/Orçamento2'}
+                            href={'/Orçamento6'}
                             type="submit"
                             fullWidth
                             variant="outlined"
@@ -132,7 +157,7 @@ export default function Configuracoes() {
                                 }
                             }}
                             >
-                                    iniciar
+                                    Avançar
                             </Button>
 
                     </Paper>

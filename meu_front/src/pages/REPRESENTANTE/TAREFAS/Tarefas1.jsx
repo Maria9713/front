@@ -4,7 +4,7 @@ import { Container, CssBaseline, Paper, Typography, Fab, Box } from '@mui/materi
 import { useNavigate } from 'react-router-dom';
 import Card_Tarefas from './Card_Tarefas'; 
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
-import MainMenu from '../../Home/Menu.Principal'; 
+import MainMenu from '../../Gerais/Home/Menu.Principal'; 
 
 export default function Central_Tarefa() {
     const navigate = useNavigate();
